@@ -1,0 +1,34 @@
+/* FutureCastComponent.css */
+
+/* Keyframes for the Typing Effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Keyframes for the Blinking Caret (the white vertical line) */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+/* The actual application of the animation is done inline in the React component 
+to dynamically calculate the `steps()` based on the text length.
+
+.typing-animation is used for the base CSS properties:
+- overflow: hidden hides the text initially.
+- white-space: nowrap ensures the text stays on one line.
+*/
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+}
