@@ -37,7 +37,7 @@ const Footer = () => {
                     min-w-[140px] sm:min-w-[160px]" // slightly smaller for no-wrap
           >
             <div className="mr-2">
-              <FaApple size={24} />
+              <FaApple size={26} />
             </div>
 
             <div className="flex flex-col leading-tight">
@@ -62,11 +62,7 @@ const Footer = () => {
           >
             <div className="mr-2">
               {/* <FaApple size={24} /> */}
-              <img
-                src="https://www.svgrepo.com/show/452223/google-play.svg"
-                alt=""
-                className="w-6"
-              />
+              <img src="../../public/google-play.png" alt="" className="w-7" />
             </div>
 
             <div className="flex flex-col leading-tight">

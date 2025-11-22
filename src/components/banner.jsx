@@ -30,20 +30,20 @@ const Banner = () => {
         {/* Store Buttons */}
         <div
           className="flex items-center justify-center 
-        space-x-3 mb-12 w-full flex-nowrap -mt-4"
+                    space-x-3 mb-12 w-full flex-nowrap "
         >
           {/* App Store Button */}
           <a
             href="#"
             target="_blank"
             className="flex items-center justify-center px-1 py-1 
-             bg-black border border-white rounded-lg 
-             transition duration-200 hover:bg-gray-900
-             w-auto text-white
-             min-w-[140px] sm:min-w-[160px]" // slightly smaller for no-wrap
+                         bg-black border border-white rounded-lg 
+                         transition duration-200 hover:bg-gray-900
+                         w-auto text-white
+                         min-w-[140px] sm:min-w-[160px]" // slightly smaller for no-wrap
           >
             <div className="mr-2">
-              <FaApple size={24} />
+              <FaApple size={26} />
             </div>
 
             <div className="flex flex-col leading-tight">
@@ -61,18 +61,14 @@ const Banner = () => {
             href="#"
             target="_blank"
             className="flex items-center justify-center px-2 py-1
-             bg-black border border-white rounded-lg
-             transition duration-200 hover:bg-gray-900
-             w-auto text-white
-             min-w=[140px] sm:min-w-[160px] text-start"
+                         bg-black border border-white rounded-lg
+                         transition duration-200 hover:bg-gray-900
+                         w-auto text-white
+                         min-w=[140px] sm:min-w-[160px] text-start"
           >
             <div className="mr-2">
               {/* <FaApple size={24} /> */}
-              <img
-                src="https://www.svgrepo.com/show/452223/google-play.svg"
-                alt=""
-                className="w-6"
-              />
+              <img src="../../public/google-play.png" alt="" className="w-7" />
             </div>
 
             <div className="flex flex-col leading-tight">
