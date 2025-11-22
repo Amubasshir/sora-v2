@@ -48,7 +48,7 @@ export default function CueTheSound() {
           {videoData.map((v, i) => (
             <div
               key={i}
-              className="snap-center flex-shrink-0 snap-always min-w-[360px] lg:min-w-[400px]"
+              className="snap-center flex-shrink-0 snap-always min-w-[360px] lg:min-w-[420px]"
               onClick={e => {
                 e.currentTarget.scrollIntoView({
                   behavior: 'smooth',
