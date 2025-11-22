@@ -131,7 +131,7 @@ const SoraShowcase = () => {
         </div>
 
         {/* Ballerina */}
-        <div className="col-span-1 relative -mt-24 sm:-mt-32 md:-mt-40">
+        <div className="col-span-1 relative -mt-24 sm:-mt-32 md:-mt-40 ">
           <VideoSequencer
             ref={refs.ballerina}
             videoSources={[videoSources.C, videoSources.C2]}
