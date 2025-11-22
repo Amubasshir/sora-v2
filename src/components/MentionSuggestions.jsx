@@ -110,7 +110,7 @@ const TextType = ({
   ]);
 
   return (
-    <span className="text-white font-medium text-lg">
+    <span className="text-white font-medium">
       {displayedText}
       {/* Show cursor only if typing is not complete and not paused */}
       {showCursor && !isTypingComplete && !isPaused && (
@@ -267,7 +267,7 @@ const MentionApp = () => {
 
           {/* Input Bar Structure */}
           <div
-            className="p-3 px-6  bg-gray-800/80 rounded-full 
+            className="p-3 px-6  bgnav rounded-full 
                        text-sm text-white font-medium flex items-center justify-between space-x-3 
                        shadow-2xl  relative z-20"
           >

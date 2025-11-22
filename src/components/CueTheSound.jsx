@@ -37,7 +37,7 @@ export default function CueTheSound() {
         className="
           mt-16
           w-full
-          flex gap-20
+          flex gap-7
           overflow-x-auto scroll-smooth
           snap-x snap-mandatory
           px-4
@@ -75,7 +75,7 @@ function VideoCard({ src }) {
   };
 
   return (
-    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[550px] sm:h-[600px] bg-gray-900 shadow-xl cursor-pointer">
+    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[450px] sm:h-[500px] bg-gray-900 shadow-xl cursor-pointer">
       <video
         ref={videoRef}
         src={src}

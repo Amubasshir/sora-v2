@@ -81,12 +81,12 @@ const SoraShowcase = () => {
             ref={refs.climber}
             videoSources={[videoSources.B, videoSources.B2]}
             muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full h-[300px] sm:h-[360px] md:h-[430px] lg:h-[460px] xl:h-[430px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-[85%] h-[300px] sm:h-[360px] md:h-[430px] lg:h-[400px] xl:h-[430px] object-cover"
           />
 
           <button
             onClick={() => toggleMute('climber')}
-            className="absolute bottom-3 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20"
+            className="absolute bottom-3 right-14 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20"
           >
             {muteState.climber ? '🔇' : '🔊'}
           </button>
