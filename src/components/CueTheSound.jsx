@@ -37,7 +37,7 @@ export default function CueTheSound() {
         className="
           mt-16
           w-full
-          flex gap-12
+          flex gap-20
           overflow-x-auto scroll-smooth
           snap-x snap-mandatory
           px-4
