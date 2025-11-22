@@ -224,7 +224,7 @@ const LightBeam = () => (
 // ---------------------------------------------------
 export default function App() {
   return (
-    <div className="relative min-h-screen text-white font-sans overflow-hidden container mx-auto">
+    <div className="relative min-h-screen text-white font-sans overflow-hidden">
       {/* Starfield background */}
       <StarField />
 
@@ -275,15 +275,15 @@ export default function App() {
 
       {/* <CloudArea>
         <CloudClickArea> */}
-
-      <Navbar />
-      <Banner />
-      <SoraShowcase />
-      <FutureCastComponent />
-      <VideoCardSlider />
-      <CueTheSound />
-      <Footer />
-
+      <div className=" container mx-auto">
+        <Navbar />
+        <Banner />
+        <SoraShowcase />
+        <FutureCastComponent />
+        <VideoCardSlider />
+        <CueTheSound />
+        <Footer />
+      </div>
       {/* </CloudClickArea>
       </CloudArea> */}
     </div>
