@@ -16,11 +16,13 @@ export default function CueTheSound() {
 
   return (
     <section className="w-full mx-auto text-white flex flex-col items-center">
-      <div className="w-full text-white px-5 md:ml-110">
-        <h2 className="text-4xl font-semibold">Cue the sound</h2>
-        <p className="text-gray-300 mt-3 max-w-md">
-          Music, sound effects, and dialogue are automatically included in
-          videos to make every scene complete.
+      <div className="w-full text-white px-5 md:ml-20 lg:ml-70">
+        <h2 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
+          Cue the sound
+        </h2>
+        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
+          Music, sound effects, and dialogue <br /> are automatically included
+          in videos <br /> to make every scene complete.
         </p>
       </div>
 
