@@ -21,8 +21,8 @@ export default function CueTheSound() {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto text-white flex flex-col items-center">
-      <div className="w-full text-white px-5 md:ml-20 lg:ml-70">
+    <section className="relative mx-auto w-full ">
+      <div className="w-full text-white px-5 md:ml-20 lg:ml-30">
         <h2 className="text-[28px] font-medium lg:text-[40px] mb-5">
           Cue the sound
         </h2>
@@ -34,11 +34,11 @@ export default function CueTheSound() {
       </div>
 
       {/* Slider Container (Hidden Overflow) */}
-      <div className="w-full mt-16 overflow-hidden">
+      <div className="w-full mt-16 overflow-hidden ">
         {/* Slider */}
         <div
           className="
-            w-full flex gap-5
+            w-full flex gap-35
             overflow-x-auto scroll-smooth
             snap-x snap-mandatory
             px-4
@@ -48,7 +48,7 @@ export default function CueTheSound() {
           {videoData.map((v, i) => (
             <div
               key={i}
-              className="snap-center flex-shrink-0 snap-always min-w-[360px] lg:min-w-[420px]"
+              className="snap-center flex-shrink-0 snap-always "
               onClick={e => {
                 e.currentTarget.scrollIntoView({
                   behavior: 'smooth',
@@ -77,7 +77,7 @@ function VideoCard({ src }) {
   };
 
   return (
-    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[450px] sm:h-[550px] bg-gray-900 shadow-xl">
+    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[450px] sm:h-[500px] bg-gray-900 shadow-xl ">
       <video
         ref={videoRef}
         src={src}
