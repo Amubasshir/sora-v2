@@ -21,44 +21,46 @@ export default function CueTheSound() {
   ];
 
   return (
-    <section className="w-full mx-auto text-white flex flex-col items-center">
+    <section className="max-w-7xl mx-auto text-white flex flex-col items-center">
       <div className="w-full text-white px-5 md:ml-20 lg:ml-70">
-        <h2 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
+        <h2 className="text-[28px] font-medium lg:text-[40px] mb-5">
           Cue the sound
         </h2>
-        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
-          Music, sound effects, and dialogue <br /> are automatically included
-          in videos <br /> to make every scene complete.
+        <p className="text-[16px] font-medium lg:text-[20px] lg:leading-[130%]">
+          Music, sound effects, and dialogue <br />
+          are automatically included in videos <br />
+          to make every scene complete.
         </p>
       </div>
 
-      {/* Slider */}
-      <div
-        className="
-          mt-16
-          w-full
-          flex gap-7
-          overflow-x-auto scroll-smooth
-          snap-x snap-mandatory
-          px-4
-        "
-        style={{ scrollbarWidth: 'none' }}
-      >
-        {videoData.map((v, i) => (
-          <div
-            key={i}
-            className="snap-center flex-shrink-0 snap-always min-w-[360px] lg:min-w-[420px]"
-            onClick={e => {
-              e.currentTarget.scrollIntoView({
-                behavior: 'smooth',
-                inline: 'center',
-                block: 'nearest',
-              });
-            }}
-          >
-            <VideoCard src={v.src} />
-          </div>
-        ))}
+      {/* Slider Container (Hidden Overflow) */}
+      <div className="w-full mt-16 overflow-hidden">
+        {/* Slider */}
+        <div
+          className="
+            w-full flex gap-5
+            overflow-x-auto scroll-smooth
+            snap-x snap-mandatory
+            px-4
+          "
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {videoData.map((v, i) => (
+            <div
+              key={i}
+              className="snap-center flex-shrink-0 snap-always min-w-[360px] lg:min-w-[400px]"
+              onClick={e => {
+                e.currentTarget.scrollIntoView({
+                  behavior: 'smooth',
+                  inline: 'center',
+                  block: 'nearest',
+                });
+              }}
+            >
+              <VideoCard src={v.src} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -75,7 +77,7 @@ function VideoCard({ src }) {
   };
 
   return (
-    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[450px] sm:h-[500px] bg-gray-900 shadow-xl cursor-pointer">
+    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[450px] sm:h-[550px] bg-gray-900 shadow-xl">
       <video
         ref={videoRef}
         src={src}
