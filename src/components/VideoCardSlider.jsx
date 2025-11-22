@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 const videos = [
   {
     src: 'https://cdn.openai.com/nf2/blog-final/remix/6eda9a57-5d6d-4890-90ee-61f89e999719/assets_task_01k6bhy3gme6a993y7zbntnv63_task_01k6bhy3gme6a993y7zbntnv63_genid_d3727d37-6dde-44ae-a562-53fd99832303_25_09_29_20_20_802899_videos_00000_src.mp4',
-    title: 'Remix everything',
+    title:
+      'One wide shot of @daniel and @minnia working together in a drab cubicle office except Daniel only responds with meows',
     text: 'Take someone else’s creation and put your spin on it.',
   },
   {
@@ -55,11 +56,11 @@ export default function VideoSlider() {
         <div className="relative flex justify-center flex-col items-center gap-5 px-4">
           {/* Typing text overlay */}
 
-          <div className="absolute left-4 bottom-20 inline-block z-20">
+          <div className="absolute left-4 bottom-20 inline-block z-20 bottom-1">
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="bg-gray-900 px-4 py-2 rounded-xl flex gap-3"
+              className="bg-gray-900 px-4 py-2 rounded-xl flex gap-3 max-w-80 w-full"
             >
               <TextType
                 key={index}
@@ -70,9 +71,9 @@ export default function VideoSlider() {
                 cursorCharacter="|"
               />
 
-              <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer bottom-0">
                 <svg
-                  className="w-3 h-3 text-black"
+                  className="w-5 h-5 text-black"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"

@@ -43,9 +43,9 @@ const SoraShowcase = () => {
   };
 
   return (
-    <section className=" py-16 md:py-24 text-white flex flex-col md:flex-row items-center gap-10">
+    <section className=" py-16 md:py-24 text-white flex flex-col md:flex-row items-center gap-10 md:gap-35">
       {/* LEFT TEXT */}
-      <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+      <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left">
         <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
           From words to worlds
         </h1>
@@ -81,7 +81,7 @@ const SoraShowcase = () => {
             ref={refs.climber}
             videoSources={[videoSources.B, videoSources.B2]}
             muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full h-[300px] sm:h-[360px] md:h-[430px] lg:h-[460px] xl:h-[500px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full h-[300px] sm:h-[360px] md:h-[430px] lg:h-[460px] xl:h-[430px] object-cover"
           />
 
           <button

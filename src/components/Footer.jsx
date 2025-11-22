@@ -7,7 +7,7 @@ import PuffyCloud from './PuffyCloud';
 const Footer = () => {
   return (
     // Outer container: Full screen, dark background, centered content
-    <div className="py-20 text-white flex items-center justify-center p-4 overflow-hidden relative ">
+    <div className="relative mx-auto w-full max-w-[1680px] h-[77vh] md:h-[75vh] px-[1.5rem] md:px-[3.125rem] flex items-center">
       {/* 2. Centered Content Container */}
       <div className="z-10 text-center mx-auto">
         {/* App Icon (Cloud Placeholder) */}
