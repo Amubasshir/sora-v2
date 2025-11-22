@@ -5,7 +5,7 @@ const videos = [
   {
     src: 'https://cdn.openai.com/nf2/blog-final/remix/6eda9a57-5d6d-4890-90ee-61f89e999719/assets_task_01k6bhy3gme6a993y7zbntnv63_task_01k6bhy3gme6a993y7zbntnv63_genid_d3727d37-6dde-44ae-a562-53fd99832303_25_09_29_20_20_802899_videos_00000_src.mp4',
     title:
-      'One wide shot of @daniel and @minnia working together in a drab cubicle office except Daniel only responds with meows',
+      'One wide shot of @daniel and @minnia working together in a drab cubicle office except Daniel only responds with meows|',
     text: 'Take someone else’s creation and put your spin on it.',
   },
   {
@@ -60,7 +60,7 @@ export default function VideoSlider() {
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="bg-gray-900 px-4 py-2 rounded-xl flex gap-3 max-w-80 w-full"
+              className="bg-gray-900 px-4 py-2 rounded-full flex gap-3 max-w-100 w-full"
             >
               <TextType
                 key={index}
@@ -71,7 +71,7 @@ export default function VideoSlider() {
                 cursorCharacter="|"
               />
 
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer bottom-0">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer bottom-0 ">
                 <svg
                   className="w-5 h-5 text-black"
                   fill="none"

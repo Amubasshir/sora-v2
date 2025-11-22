@@ -1,5 +1,7 @@
 import './FutureCastComponent.css';
-import TextType from './TextType';
+import MentionSuggestions from './MentionSuggestions';
+
+// import TextType from './TextType';
 
 const FutureCastComponent = () => {
   // Use a simulated video/image URL for the main backdrop and avatars
@@ -30,7 +32,7 @@ const FutureCastComponent = () => {
         <div className="flex justify-center md:justify-end">
           <div className="relative  max-w-md">
             {/* 📹 Main Video Frame */}
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-purple-900/50">
+            <div className="rounded-2xl overflow-hidden ">
               <video
                 src={videoUrl}
                 autoPlay
@@ -63,12 +65,14 @@ const FutureCastComponent = () => {
             </div>
           </div>
         </div>
+
         {/* 💬 Bottom Caption/Prompt Bubble with Typing Animation */}
+
         <div
-          className="absolute bottom-4 left-10/30 lg:left-2/12 -translate-x-1/2 p-3 px-6 bg-gray-800/80 backdrop-blur-sm rounded-full 
-                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none ml-60"
+          className="absolute -bottom-12 left-10/30 lg:left-2/12 -translate-x-1/2 p-3 px-6  rounded-full 
+                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none ml-86"
         >
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <TextType
               text={['@minnia and @thomas in a retro futuristic world|']}
               typingSpeed={75}
@@ -79,7 +83,7 @@ const FutureCastComponent = () => {
           </div>
 
           {/* Up Arrow Icon */}
-          <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer">
+          {/* <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer">
             <svg
               className="w-3 h-3 text-black"
               fill="none"
@@ -94,8 +98,11 @@ const FutureCastComponent = () => {
                 d="M5 10l7-7m0 0l7 7m-7-7v18"
               ></path>
             </svg>
-          </div>
+          </div> */}
+
+          <MentionSuggestions></MentionSuggestions>
         </div>
+
         {/* 📝 Right Section: Text Content */}
         <div className="relative md:col-start-2 flex justify-start">
           <div className="max-w-md">
