@@ -62,7 +62,7 @@ const Footer = () => {
           >
             <div className="mr-2">
               {/* <FaApple size={24} /> */}
-              <img src="../../public/google-play.png" alt="" className="w-7" />
+              <img src="./google-play.png" alt="" className="w-7" />
             </div>
 
             <div className="flex flex-col leading-tight">
