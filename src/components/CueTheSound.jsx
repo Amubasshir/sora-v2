@@ -15,26 +15,24 @@ export default function CueTheSound() {
   ];
 
   return (
-    <section className="w-full py-24 bg-black text-white flex flex-col items-center">
-      {/* Title */}
-      <h2 className="text-4xl font-semibold">Cue the sound</h2>
-      <p className="text-gray-300 mt-3 max-w-md text-center">
-        Music, sound effects, and dialogue are automatically included in videos
-        to make every scene complete.
-      </p>
+    <section className="w-full mx-auto text-white flex flex-col items-center">
+      <div className="w-full text-white px-5 md:ml-110">
+        <h2 className="text-4xl font-semibold">Cue the sound</h2>
+        <p className="text-gray-300 mt-3 max-w-md">
+          Music, sound effects, and dialogue are automatically included in
+          videos to make every scene complete.
+        </p>
+      </div>
 
-      {/* Videos */}
+      {/* Slider / Grid */}
       <div
         className="
-          mt-16 
-          w-full 
-          md:grid md:grid-cols-2 lg:grid-cols-3 
-          gap-12 
-          flex md:block 
-          overflow-x-auto scroll-smooth 
-          snap-x snap-mandatory 
-          px-4
+          mt-16 w-full
+          flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4
+          lg:grid lg:grid-cols-3
+          lg:overflow-visible lg:snap-none
         "
+        style={{ scrollbarWidth: 'none' }}
       >
         {videoData.map((v, i) => (
           <div
@@ -71,7 +69,6 @@ function VideoCard({ src }) {
         className="w-full h-full object-cover"
       />
 
-      {/* Play sound button (unchanged) */}
       <button
         onClick={toggleSound}
         className="
@@ -79,15 +76,10 @@ function VideoCard({ src }) {
           bg-black/60 text-white backdrop-blur-md px-5 py-2.5
           rounded-full flex items-center gap-2
           text-sm font-medium border border-white/20
-          shadow-lg hover:bg-black/70 transition
         "
       >
         Play sound
-        {playingSound ? (
-          <HiVolumeUp className="text-lg" />
-        ) : (
-          <HiVolumeOff className="text-lg" />
-        )}
+        {playingSound ? <HiVolumeUp /> : <HiVolumeOff />}
       </button>
     </div>
   );

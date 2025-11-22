@@ -224,7 +224,7 @@ const LightBeam = () => (
 // ---------------------------------------------------
 export default function App() {
   return (
-    <div className="relative min-h-screen text-white font-sans overflow-hidden">
+    <div className="relative min-h-screen text-white font-sans overflow-hidden container mx-auto">
       {/* Starfield background */}
       <StarField />
 

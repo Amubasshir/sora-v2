@@ -37,14 +37,17 @@ export default function VideoSlider() {
     }
   };
   return (
-    <section className="w-full min-h-screen text-white flex items-center justify-center px-10 py-20">
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <section className="relative mx-auto w-full pb-[140px] md:pb-[130px]">
+      <div className=" w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         {/* LEFT TEXT */}
-        <div>
-          <h2 className="text-4xl font-medium">Remix everything</h2>
-          <p className="w-[70%] mt-2">
-            Take someone else’s creation and put your spin on it. Swap
-            characters, change the vibe, add new scenes, or extend the story.
+        <div className="px-3">
+          <h2 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
+            Remix everything
+          </h2>
+          <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
+            Take someone else’s creation and put your <br /> spin on it. Swap
+            characters, change the <br /> vibe, add new scenes, or extend the
+            story.
           </p>
         </div>
 

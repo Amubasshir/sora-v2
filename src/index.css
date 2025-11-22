@@ -1,4 +1,12 @@
 @import 'tailwindcss';
+
+.bgnav {
+  background-color: rgb(37 37 37 / 65%);
+}
+
+.bgbtn {
+  background-color: hsla(0, 0%, 100%, 0.2);
+}
 .animate-slideFade {
   animation: slideFade 2s ease-out forwards;
 }

@@ -7,36 +7,36 @@ import CloudCharacter from './CloudCharacter';
 
 const Banner = () => {
   return (
-    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-25">
+    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-25 leading-tight">
       <div className="z-10 text-center max-w-lg mx-auto">
-        <div className="flex justify-center">
+        <div className="flex justify-center -mt-4">
           <CloudCharacter />
         </div>
 
         {/* Title */}
-        <h1 className="text-[36px] font-medium mb-4 tracking-tighter leading-tight">
+        <h1 className="text-[36px] font-medium mb-4 tracking-tighter leading-tight mt-5">
           The new Sora app
         </h1>
 
         {/* Description */}
-        <p className="text-lg font-medium text-white mb-8 leading-tight">
+        <p className="text-lg font-medium text-white mb-8 leading-tight ">
           Turn your ideas into videos with hyperreal motion and sound.
         </p>
 
-        <p className="text-lg text-white font-medium mb-12 leading-tight">
+        <p className="text-lg text-white font-medium mb-12 leading-tight -mt-2">
           Rolling out now.
         </p>
 
         {/* Store Buttons */}
         <div
           className="flex items-center justify-center 
-        space-x-3 mb-12 w-full flex-nowrap"
+        space-x-3 mb-12 w-full flex-nowrap -mt-4"
         >
           {/* App Store Button */}
           <a
             href="#"
             target="_blank"
-            className="flex items-center justify-center px-3 py-2 
+            className="flex items-center justify-center px-1 py-1 
              bg-black border border-white rounded-lg 
              transition duration-200 hover:bg-gray-900
              w-auto text-white
@@ -47,10 +47,10 @@ const Banner = () => {
             </div>
 
             <div className="flex flex-col leading-tight">
-              <span className="font-extralight text-[9px] sm:text-xs">
+              <span className="font-extralight text-[9px] sm:text-xs ">
                 Download on the
               </span>
-              <span className="font-semibold text-sm sm:text-lg">
+              <span className="font-semibold text-sm sm:text-lg -mt-1">
                 App Store
               </span>
             </div>
@@ -60,7 +60,7 @@ const Banner = () => {
           <a
             href="#"
             target="_blank"
-            className="flex items-center justify-center px-3 py-2
+            className="flex items-center justify-center px-2 py-1
              bg-black border border-white rounded-lg
              transition duration-200 hover:bg-gray-900
              w-auto text-white
@@ -79,7 +79,7 @@ const Banner = () => {
               <span className="font-extralight text-[9px] sm:text-xs">
                 GET IT ON
               </span>
-              <span className="font-semibold text-sm sm:text-lg">
+              <span className="font-semibold text-sm sm:text-lg -mt-1">
                 Google Play
               </span>
             </div>
@@ -90,7 +90,7 @@ const Banner = () => {
         <a
           href="#"
           target="_blank"
-          className="inline-block px-8 py-3 bg-white text-black font-semibold rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight"
+          className="inline-block px-5 py-3 bg-white text-black font-normal rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight -mt-4"
         >
           Read the research
         </a>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Download, LogIn } from 'lucide-react';
 
 const Navbar = () => (
-  <nav className="fixed top-0 z-50 w-full p-3 md:p-4 bg-transparent transition-all duration-300">
+  <nav className="fixed top-0 z-50 w-full p-3 md:p-4 stransition-all duration-300">
     <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-8 flex items-center justify-center">
       {/* Left Logo */}
       <div className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2">
@@ -12,18 +12,18 @@ const Navbar = () => (
       </div>
 
       {/* Center Content */}
-      <div className="bg-transparent backdrop-blur-sm px-3 sm:px-4 py-4 rounded-full flex items-center shadow-2xl border border-white/10 gap-6 sm:gap-10 md:gap-20">
+      <div className="bgnav backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full flex items-center shadow-2xl border border-white/10 gap-6 sm:gap-10 md:gap-20">
         <a className="text-white font-semibold text-lg sm:text-xl md:text-2xl cursor-pointer">
           Sora
         </a>
 
         <div className="flex items-center gap-2 sm:gap-3">
           <a className="px-2 sm:px-3 py-1 text-gray-400 hover:text-white flex items-center text-xs sm:text-sm md:text-base whitespace-nowrap cursor-pointer">
-            <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 hidden sm:inline " />
+            {/* <Download className="w-3 h-3 sm:w-4 sm:h-4 mr-1 hidden sm:inline " /> */}
             Download
           </a>
 
-          <button className="px-3 sm:px-4 md:px-5 py-1.5 bg-white text-black font-semibold rounded-full hover:bg-gray-200 text-xs sm:text-sm md:text-base shadow-lg flex items-center whitespace-nowrap cursor-pointer">
+          <button className="px-3 sm:px-4 md:px-5 py-1.5 bgbtn text-white font-semibold rounded-full hover:bg-gray-900 text-xs sm:text-sm md:text-base shadow-lg flex items-center whitespace-nowrap cursor-pointer">
             <LogIn className="w-3 h-3 sm:w-4 sm:h-4 mr-1 hidden sm:inline" />
             Login
           </button>

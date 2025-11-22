@@ -43,15 +43,16 @@ const SoraShowcase = () => {
   };
 
   return (
-    <section className="max-w-[1680px] mx-auto px-4 md:px-10 lg:px-16 py-16 md:py-24 text-white flex flex-col md:flex-row items-center gap-10">
+    <section className=" py-16 md:py-24 text-white flex flex-col md:flex-row items-center gap-10">
       {/* LEFT TEXT */}
       <div className="md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+        <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
           From words to worlds
         </h1>
-        <p className="text-gray-300 text-sm md:text-base max-w-sm md:max-w-md mt-4">
-          Start with a prompt or upload an image to create videos with
-          unprecedented realism.
+        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
+          Start with a prompt or upload an image <br /> to create videos with
+          unprecedented <br /> realism in any style: cinematic, <br /> animated,
+          photorealistic, or surreal.
         </p>
       </div>
 
@@ -68,7 +69,7 @@ const SoraShowcase = () => {
 
           <button
             onClick={() => toggleMute('cowboy')}
-            className="absolute bottom-3 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20"
+            className="absolute bottom-60 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20 z-30"
           >
             {muteState.cowboy ? '🔇' : '🔊'}
           </button>
@@ -98,7 +99,13 @@ const SoraShowcase = () => {
         >
           <div className="flex items-center">
             <TextType
-              text={['@minnia and @thomas in a retro futuristic world|']}
+              text={[
+                'Create a hillarious video',
+                'Create a funny video',
+                'Create a cinematic scen',
+                'Create a cinematic scene|',
+                'Create a cinematic scene',
+              ]}
               typingSpeed={75}
               pauseDuration={1500}
               showCursor={true}
@@ -106,9 +113,9 @@ const SoraShowcase = () => {
             />
           </div>
 
-          <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center cursor-pointer">
+          <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center cursor-pointer">
             <svg
-              className="w-3 h-3 text-black"
+              className="w-4 h-4 text-black"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -134,7 +141,7 @@ const SoraShowcase = () => {
 
           <button
             onClick={() => toggleMute('ballerina')}
-            className="absolute bottom-3 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20"
+            className="absolute bottom-10 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20"
           >
             {muteState.ballerina ? '🔇' : '🔊'}
           </button>
