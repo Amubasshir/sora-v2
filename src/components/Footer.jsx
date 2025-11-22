@@ -7,17 +7,17 @@ import PuffyCloud from './PuffyCloud';
 const Footer = () => {
   return (
     // Outer container: Full screen, dark background, centered content
-    <div className="py-15 text-white flex items-center justify-center p-4 overflow-hidden relative ">
+    <div className="py-20 text-white flex items-center justify-center p-4 overflow-hidden relative ">
       {/* 2. Centered Content Container */}
-      <div className="z-10 text-center max-w-lg mx-auto">
+      <div className="z-10 text-center mx-auto">
         {/* App Icon (Cloud Placeholder) */}
         {/* <CloudClickArea> */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-3">
           <PuffyCloud></PuffyCloud>
         </div>
         {/* </CloudClickArea> */}
         {/* 3. Title and Description */}
-        <h1 className="text-[36px] font-medium mb-4 tracking-tighter">
+        <h1 class="text-center font-medium leading-[118%] tracking-[-0.01em] text-[28px] md:text-[48px] mb-7">
           Download the new Sora app
         </h1>
 
@@ -80,7 +80,7 @@ const Footer = () => {
         <a
           href="#"
           target="_blank"
-          className="inline-block px-5 py-3 bg-white text-black font-normal rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight -mt-4"
+          className="inline-block px-5 py-3 bg-white text-black font-normal rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight "
         >
           Read the research
         </a>

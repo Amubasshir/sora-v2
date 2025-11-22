@@ -12,6 +12,12 @@ export default function CueTheSound() {
     {
       src: 'https://openaiassets.blob.core.windows.net/$web/nf2/nf2-lp/nf2-lp-audio/bbea88b1-c02c-4cbb-aaed-1c855308edea/20250926_1548_New%20Video_simple_compose_01k643d1nafj5vd8c86455qbpm%20(1).mp4',
     },
+    {
+      src: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-audio/4f7b652a-6db1-4ead-86fe-f3a88ba45963/20250928_1621_New%20Video_simple_compose_01k69a30m6fp3t09402x1b1mvh.mp4',
+    },
+    {
+      src: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-audio/4f7b652a-6db1-4ead-86fe-f3a88ba45963/20250928_1629_New%20Video_simple_compose_01k69ahbb2f4wbrfjzy6aznww1.mp4',
+    },
   ];
 
   return (
@@ -26,20 +32,29 @@ export default function CueTheSound() {
         </p>
       </div>
 
-      {/* Slider / Grid */}
+      {/* Slider */}
       <div
         className="
-          mt-16 w-full
-          flex gap-10 overflow-x-auto scroll-smooth snap-x snap-mandatory px-4
-          lg:grid lg:grid-cols-3
-          lg:overflow-visible lg:snap-none
+          mt-16
+          w-full
+          flex gap-12
+          overflow-x-auto scroll-smooth
+          snap-x snap-mandatory
+          px-4
         "
         style={{ scrollbarWidth: 'none' }}
       >
         {videoData.map((v, i) => (
           <div
             key={i}
-            className="snap-center flex-shrink-0 md:flex-shrink snap-always"
+            className="snap-center flex-shrink-0 snap-always min-w-[360px] lg:min-w-[420px]"
+            onClick={e => {
+              e.currentTarget.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest',
+              });
+            }}
           >
             <VideoCard src={v.src} />
           </div>
@@ -60,7 +75,7 @@ function VideoCard({ src }) {
   };
 
   return (
-    <div className="relative mx-auto md:mx-0 rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[550px] sm:h-[600px] bg-gray-900 shadow-xl">
+    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[320px] h-[550px] sm:h-[600px] bg-gray-900 shadow-xl cursor-pointer">
       <video
         ref={videoRef}
         src={src}
@@ -72,7 +87,10 @@ function VideoCard({ src }) {
       />
 
       <button
-        onClick={toggleSound}
+        onClick={e => {
+          e.stopPropagation();
+          toggleSound();
+        }}
         className="
           absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
           bg-black/60 text-white backdrop-blur-md px-5 py-2.5
