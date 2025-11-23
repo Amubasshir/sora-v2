@@ -45,8 +45,8 @@ const SoraShowcase = () => {
   return (
     <section className=" py-16 md:py-24 text-white flex flex-col md:flex-row items-center gap-10 md:gap-35">
       {/* LEFT TEXT */}
-      <div className="md:w-1/3 flex flex-col items-center md:items-start text-center md:text-left px-3">
-        <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
+      <div className="relative flex flex-col gap-[16px] text-[white] md:max-w-[425px] lg:gap-5 xl:max-w-[545px] w-full md:mt-[148px] md:w-[40%] px-3">
+        <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
           From words to worlds
         </h1>
         <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">

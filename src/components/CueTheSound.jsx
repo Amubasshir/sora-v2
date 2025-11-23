@@ -47,10 +47,10 @@ export default function CueTheSound() {
   return (
     <section className="relative mx-auto w-full">
       <div className="w-full text-white px-5 md:ml-20 lg:ml-30">
-        <h2 className="text-[28px] font-medium lg:text-[40px] mb-5">
+        <h2 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
           Cue the sound
         </h2>
-        <p className="text-[16px] font-medium lg:text-[20px] lg:leading-[130%]">
+        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
           Music, sound effects, and dialogue <br />
           are automatically included in videos <br />
           to make every scene complete.

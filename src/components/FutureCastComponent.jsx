@@ -105,8 +105,8 @@ const FutureCastComponent = () => {
 
         {/* 📝 Right Section: Text Content */}
         <div className="relative md:col-start-2 flex justify-start">
-          <div className="max-w-md">
-            <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
+          <div className="max-w-md space-y-6">
+            <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
               Cast yourself and your friends
             </h1>
             <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">

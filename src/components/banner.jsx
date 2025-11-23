@@ -7,30 +7,29 @@ import CloudCharacter from './CloudCharacter';
 
 const Banner = () => {
   return (
-    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-30 leading-tight">
+    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-25 leading-tight">
       <div className="z-10 text-center max-w-lg mx-auto">
         <div className="flex justify-center -mt-4">
           <CloudCharacter />
         </div>
 
         {/* Title */}
-        <h1 className="text-[36px] font-medium mb-4 tracking-tighter leading-tight mt-5">
+        <h1 className="text-center font-medium leading-[118%] tracking-[-0.01em] text-[36px] mb-2">
           The new Sora app
         </h1>
 
         {/* Description */}
-        <p className="text-lg font-medium text-white mb-8 leading-tight ">
+        <p className="text-balance text-center text-[18px] font-medium leading-[140%] tracking-[-0.01em] lg:leading-[130%]">
           Turn your ideas into videos with hyperreal motion and sound.
-        </p>
-
-        <p className="text-lg text-white font-medium mb-12 leading-tight -mt-2">
+          <br />
+          <br />
           Rolling out now.
         </p>
 
         {/* Store Buttons */}
         <div
           className="flex items-center justify-center 
-                    space-x-3 mb-12 w-full flex-nowrap -mt-6"
+                    space-x-3 mb-12 w-full flex-nowrap mt-5"
         >
           {/* App Store Button */}
           <a
