@@ -30,7 +30,7 @@ const FutureCastComponent = () => {
       <div className="relative z-10 max-w-7xl w-full grid md:grid-cols-2 gap-16 lg:gap-60 items-center">
         {/* 🎥 Left Section: Video and Avatars */}
         <div className="flex justify-center md:justify-end">
-          <div className="relative  max-w-md">
+          <div className="relative  max-w-[lg]">
             {/* 📹 Main Video Frame */}
             <div className="rounded-2xl overflow-hidden ">
               <video
@@ -40,7 +40,7 @@ const FutureCastComponent = () => {
                 muted
                 playsInline
                 poster="path/to/fallback-image.jpg"
-                className="w-full h-auto object-cover md:h-[500px] aspect-[9/16] md:aspect-auto bg-gray-900"
+                className="w-full h-auto object-cover md:h-[600px] aspect-[9/16] md:aspect-auto bg-gray-900"
                 style={{ objectPosition: 'center 40%' }}
               >
                 <source src={videoUrl} type="video/mp4" />

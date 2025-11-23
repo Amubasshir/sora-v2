@@ -2,7 +2,7 @@ import React from 'react';
 import { Download, LogIn } from 'lucide-react';
 
 const Navbar = () => (
-  <nav className="fixed top-0 z-50 w-full p-3 md:p-4 transition-all duration-300  container mx-auto">
+  <nav className="fixed top-0 z-50 w-full p-3 md:p-4 transition-all duration-300  max-w-[1400px]  mx-auto">
     <div className="relative mx-auto px-3 sm:px-4 md:px-8 flex items-center justify-center">
       {/* Left Logo (fixed width for balance) */}
       <div className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-24">

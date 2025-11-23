@@ -275,7 +275,7 @@ export default function App() {
 
       {/* <CloudArea>
         <CloudClickArea> */}
-      <div className=" container mx-auto overflow-hidden  ">
+      <div className="max-w-[1300px] mx-auto overflow-hidden border-2">
         <Navbar />
         <Banner />
         <SoraShowcase />

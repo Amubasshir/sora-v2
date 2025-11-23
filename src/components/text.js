@@ -5,7 +5,6 @@ export default function CueTheSound() {
   const sliderRef = useRef(null);
 
   const videoData = [
-    { src: '' },
     {
       src: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-audio/4f7b652a-6db1-4ead-86fe-f3a88ba45963/20250928_1610_New%20Video_simple_compose_01k699enp0e9etjhwz3rhhzwxv.mp4',
     },
@@ -21,22 +20,26 @@ export default function CueTheSound() {
     {
       src: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-audio/4f7b652a-6db1-4ead-86fe-f3a88ba45963/20250928_1629_New%20Video_simple_compose_01k69ahbb2f4wbrfjzy6aznww1.mp4',
     },
-    { src: '' },
   ];
 
   const centerCard = index => {
     const slider = sliderRef.current;
     const card = slider.children[index];
 
-    const sliderWidth = slider.clientWidth;
-    const cardWidth = card.clientWidth;
-    const cardLeft = card.offsetLeft;
+    const sliderRect = slider.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
 
-    let scrollTo = cardLeft - sliderWidth / 2 + cardWidth / 2;
+    const sliderCenter = sliderRect.width / 2;
+    const cardCenter = cardRect.left - sliderRect.left + cardRect.width / 2;
 
-    const isLargeScreen = window.innerWidth >= 1024;
-    if (isLargeScreen) {
-      const gap = cardWidth * 0.5;
+    let scrollTo = slider.scrollLeft + (cardCenter - sliderCenter);
+
+    const cardWidth = cardRect.width;
+
+    // ✔ Gap of 1 card on large screens
+    if (window.innerWidth >= 1024) {
+      const gap = cardWidth;
+
       if (index === 0) scrollTo -= gap;
       if (index === slider.children.length - 1) scrollTo += gap;
     }
@@ -57,27 +60,37 @@ export default function CueTheSound() {
         </p>
       </div>
 
+      {/* SLIDER */}
       <div className="w-full mt-16 overflow-hidden">
+        {/* <div
+          ref={sliderRef}
+          className="
+            w-full flex gap-10
+            overflow-x-auto scroll-smooth
+            px-6
+            snap-x snap-mandatory
+          "
+          style={{ scrollbarWidth: 'none' }}
+        > */}
+
         <div
           ref={sliderRef}
-          className="w-full flex gap-26 overflow-x-auto scroll-smooth px-6 snap-x snap-mandatory"
+          className="
+    w-full flex gap-10
+    overflow-x-auto scroll-smooth
+    px-6
+    pl-[50vw] pr-[50vw]
+    snap-x snap-mandatory
+  "
           style={{ scrollbarWidth: 'none' }}
         >
           {videoData.map((v, i) => (
             <div
               key={i}
-              className={`
-                snap-center flex-shrink-0
-                ${
-                  i === 0 || i === videoData.length - 1 ? 'hidden sm:block' : ''
-                }
-              `}
+              className="snap-center flex-shrink-0"
               onClick={() => centerCard(i)}
             >
-              <VideoCard
-                src={v.src}
-                isEdge={i === 0 || i === videoData.length - 1}
-              />
+              <VideoCard src={v.src} />
             </div>
           ))}
         </div>
@@ -86,7 +99,7 @@ export default function CueTheSound() {
   );
 }
 
-function VideoCard({ src, isEdge }) {
+function VideoCard({ src }) {
   const videoRef = useRef(null);
   const [playingSound, setPlayingSound] = useState(false);
 
@@ -97,7 +110,13 @@ function VideoCard({ src, isEdge }) {
   };
 
   return (
-    <div className="relative mx-auto rounded-3xl overflow-hidden w-[280px] sm:w-[300px] md:w-[350px] h-[450px] sm:h-[600px] shadow-xl">
+    <div
+      className="
+      relative mx-auto rounded-3xl overflow-hidden bg-gray-900 shadow-xl
+      w-[280px] sm:w-[300px] md:w-[320px]
+      h-[450px] sm:h-[550px]
+    "
+    >
       <video
         ref={videoRef}
         src={src}
@@ -108,24 +127,21 @@ function VideoCard({ src, isEdge }) {
         className="w-full h-full object-cover"
       />
 
-      {/* Hide Play sound button for first & last card */}
-      {!isEdge && (
-        <button
-          onClick={e => {
-            e.stopPropagation();
-            toggleSound();
-          }}
-          className="
-            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-            text-white backdrop-blur-md px-5 py-2.5
-            rounded-full flex items-center gap-2
-            text-sm font-medium border border-white/20
-          "
-        >
-          Play sound
-          {playingSound ? <HiVolumeUp /> : <HiVolumeOff />}
-        </button>
-      )}
+      <button
+        onClick={e => {
+          e.stopPropagation();
+          toggleSound();
+        }}
+        className="
+          absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+          bg-black/60 text-white backdrop-blur-md px-5 py-2.5
+          rounded-full flex items-center gap-2
+          text-sm font-medium border border-white/20
+        "
+      >
+        Play sound
+        {playingSound ? <HiVolumeUp /> : <HiVolumeOff />}
+      </button>
     </div>
   );
 }
