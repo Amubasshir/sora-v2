@@ -69,7 +69,7 @@ const SoraShowcase = () => {
 
           <button
             onClick={() => toggleMute('cowboy')}
-            className="absolute bottom-60 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20 z-30"
+            className="absolute bottom-43 right-3 bg-black/60 px-3 py-2 rounded-full text-sm border border-white/20 z-30"
           >
             {muteState.cowboy ? '🔇' : '🔊'}
           </button>

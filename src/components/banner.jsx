@@ -7,7 +7,7 @@ import CloudCharacter from './CloudCharacter';
 
 const Banner = () => {
   return (
-    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-25 leading-tight">
+    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-30 leading-tight">
       <div className="z-10 text-center max-w-lg mx-auto">
         <div className="flex justify-center -mt-4">
           <CloudCharacter />
@@ -30,7 +30,7 @@ const Banner = () => {
         {/* Store Buttons */}
         <div
           className="flex items-center justify-center 
-                    space-x-3 mb-12 w-full flex-nowrap "
+                    space-x-3 mb-12 w-full flex-nowrap -mt-6"
         >
           {/* App Store Button */}
           <a
@@ -47,7 +47,7 @@ const Banner = () => {
             </div>
 
             <div className="flex flex-col leading-tight">
-              <span className="font-extralight text-[9px] sm:text-xs ">
+              <span className="font-extralight text-[3px] sm:text-xs ">
                 Download on the
               </span>
               <span className="font-semibold text-sm sm:text-lg -mt-1">
@@ -72,7 +72,7 @@ const Banner = () => {
             </div>
 
             <div className="flex flex-col leading-tight">
-              <span className="font-extralight text-[9px] sm:text-xs">
+              <span className="font-extralight text-[3px] sm:text-xs">
                 GET IT ON
               </span>
               <span className="font-semibold text-sm sm:text-lg -mt-1">

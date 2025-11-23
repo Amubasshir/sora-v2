@@ -32,3 +32,29 @@
 .animation-delay-700 {
   animation-delay: 0.7s;
 }
+
+@font-face {
+  font-family: opneAISemiBold;
+  src: url(../public/fonts/OpenSans-SemiBold.ttf);
+}
+
+/* @font-face {
+  font-family: opneAIRegular;
+  src: url(../public/fonts/OpenSans-Regular.ttf);
+} */
+/* @font-face {
+  font-family: opneAIMedium;
+  src: url(../public/fonts/OpenSans-Medium.ttf);
+} */
+/* @font-face {
+  font-family: opneAIBold;
+  src: url(../public/fonts/OpenSans-Bold.ttf);
+}
+
+
+
+
+@font-face {
+  font-family: opneAIExtraBold;
+  src: url(../public/fonts/OpenSans-ExtraBold.ttf);
+} */

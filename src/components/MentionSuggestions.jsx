@@ -254,7 +254,7 @@ const MentionApp = () => {
 
   return (
     // Full screen setup with transparent background and centered content
-    <div className="relative font-sans flex items-center justify-center">
+    <div className="relative  flex items-center justify-center">
       {/* This wrapper is now centered by the parent flex container */}
       <div className="w-[80%] max-w-lg p-4">
         {/* The Mention Suggestions Box and Input Wrapper */}
