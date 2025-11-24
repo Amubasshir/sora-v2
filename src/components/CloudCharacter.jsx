@@ -64,7 +64,7 @@ const PuffyCloud = ({ mood = 'IDLE' }) => {
   };
 
   return (
-    <div className="relative w-[90px] h-[90px] flex items-center justify-center -mt-25 pb-4">
+    <div className="relative w-[90px] h-[90px] flex items-center justify-center -mt-8 pb-4">
       {/* Floating cloud wrapper */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-[#1e2a4a] to-[#0d1117]

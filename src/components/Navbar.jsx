@@ -18,7 +18,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 z-50 w-full transition-all duration-300 max-w-[1300px] mx-auto">
+    <nav className="fixed top-0 z-50 w-full transition-all duration-300 max-w-[1300px] mx-auto mt-5">
       <div className="relative mx-auto  flex items-center justify-center">
         {/* LEFT LOGO BLOCK */}
         <div className="absolute left-3 top-1/2 -translate-y-1/2 w-24 group">
