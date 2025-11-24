@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import TextType from './TextType';
-import { motion } from 'framer-motion';
 
+import { motion, AnimatePresence } from 'framer-motion';
 const videos = [
   {
     src: 'https://cdn.openai.com/nf2/blog-final/remix/6eda9a57-5d6d-4890-90ee-61f89e999719/assets_task_01k6bhy3gme6a993y7zbntnv63_task_01k6bhy3gme6a993y7zbntnv63_genid_d3727d37-6dde-44ae-a562-53fd99832303_25_09_29_20_20_802899_videos_00000_src.mp4',
@@ -73,9 +73,14 @@ export default function VideoSlider() {
                 cursorCharacter="|"
               />
 
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer bottom-0 ">
+              <motion.div
+                className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer 
+                                     transition-all duration-300 hover:bg-yellow-400"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <svg
-                  className="w-4 h-4 text-black"
+                  className="w-4 h-4 text-gray-800"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -88,7 +93,7 @@ export default function VideoSlider() {
                     d="M5 10l7-7m0 0l7 7m-7-7v18"
                   ></path>
                 </svg>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
 

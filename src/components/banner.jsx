@@ -85,7 +85,11 @@ const Banner = () => {
         <a
           href="#"
           target="_blank"
-          className="inline-block px-5 py-3 bg-white text-black font-normal rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight -mt-4"
+          className="inline-block px-5 py-3 font-normal rounded-full shadow-lg bg-gray-100 text-black
+             hover:bg-gray-200 hover:opacity-70
+             focus:outline-none focus:ring-2 focus:ring-primary-12
+             disabled:bg-gray-400 disabled:text-gray-600
+             transition duration-200 ease-in-out"
         >
           Read the research
         </a>

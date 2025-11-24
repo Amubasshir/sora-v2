@@ -64,7 +64,7 @@ const PuffyCloud = ({ mood = 'IDLE' }) => {
   };
 
   return (
-    <div className="relative w-[100px] h-[100px] flex items-center justify-center -mt-10 pb-4">
+    <div className="relative w-[90px] h-[90px] flex items-center justify-center -mt-25 pb-4">
       {/* Floating cloud wrapper */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-[#1e2a4a] to-[#0d1117]
@@ -118,7 +118,7 @@ const PuffyCloud = ({ mood = 'IDLE' }) => {
         <div className="absolute inset-0 flex items-center justify-center pb-2">
           <div className="flex gap-2 items-center translate-y-1">
             {/* Left Eye */}
-            <div className="relative w-3 h-4 sm:w-7 sm:h-7">
+            <div className="relative w-2 h-3 sm:w-5 sm:h-6">
               <motion.div
                 className="w-5 h-full bg-slate-900 rounded-full origin-center overflow-hidden relative"
                 variants={eyeVariants}
@@ -137,7 +137,7 @@ const PuffyCloud = ({ mood = 'IDLE' }) => {
             </div>
 
             {/* Right Eye */}
-            <div className="relative w-3 h-4 sm:w-7 sm:h-7">
+            <div className="relative w-2 h-3 sm:w-5 sm:h-6">
               <motion.div
                 className="w-5 h-full bg-slate-900 rounded-full origin-center overflow-hidden relative"
                 variants={eyeVariants}
