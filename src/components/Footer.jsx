@@ -80,7 +80,7 @@ const Footer = () => {
         <a
           href="#"
           target="_blank"
-          className="inline-block px-5 py-3 bg-white text-black font-normal rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight "
+          className="inline-block px-5 py-3 bg-white text-black  rounded-full shadow-lg hover:bg-gray-200 transition duration-200 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 leading-tight "
         >
           Read the research
         </a>
