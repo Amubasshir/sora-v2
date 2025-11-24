@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi';
 
 export default function CueTheSound() {
@@ -44,13 +44,20 @@ export default function CueTheSound() {
     slider.scrollTo({ left: scrollTo, behavior: 'smooth' });
   };
 
+  // Auto show cards 2, 3, 4 by centering card 2
+  useEffect(() => {
+    if (sliderRef.current) {
+      setTimeout(() => centerCard(2), 100);
+    }
+  }, []);
+
   return (
     <section className="relative mx-auto w-full">
       <div className="w-full text-white px-5 md:ml-20 lg:ml-30">
-        <h2 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
+        <h2 className="text-[28px] font-medium lg:text-[40px] mb-5">
           Cue the sound
         </h2>
-        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
+        <p className="text-[16px] font-medium lg:text-[20px]">
           Music, sound effects, and dialogue <br />
           are automatically included in videos <br />
           to make every scene complete.
@@ -108,19 +115,13 @@ function VideoCard({ src, isEdge }) {
         className="w-full h-full object-cover"
       />
 
-      {/* Hide Play sound button for first & last card */}
       {!isEdge && (
         <button
           onClick={e => {
             e.stopPropagation();
             toggleSound();
           }}
-          className="
-            absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-            text-white backdrop-blur-md px-5 py-2.5
-            rounded-full flex items-center gap-2
-            text-sm font-medium border border-white/20
-          "
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium border border-white/20"
         >
           Play sound
           {playingSound ? <HiVolumeUp /> : <HiVolumeOff />}
