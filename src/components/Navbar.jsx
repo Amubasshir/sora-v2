@@ -56,10 +56,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 z-50 w-full p-3 md:p-4 transition-all duration-300 max-w-[1300px] mx-auto">
+    <nav className="fixed top-0 z-50 w-full transition-all duration-300 max-w-[1300px] mx-auto">
       <div className="relative mx-auto  flex items-center justify-center">
         {/* LEFT LOGO BLOCK */}
-        <div className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-24 group">
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 w-24 group">
           {/* TEXT — only shows at top on hover */}
           <h1
             className={`
