@@ -213,9 +213,9 @@ const PuffyCloud = ({ mood = 'IDLE' }) => {
   const eyeVariants = { open: { scaleY: 1 }, closed: { scaleY: 0.1 } };
 
   return (
-    <div ref={containerRef} className="relative w-[150px] h-[150px] mx-auto">
+    <div ref={containerRef} className="relative w-[90px] h-[90px] mx-auto">
       <motion.div
-        className="cursor-pointer w-full h-full"
+        className="cursor-pointer w-full h-full bg-gradient-to-b from-[#1e2a4a] to-[#0d1117] rounded-3xl"
         drag
         dragConstraints={containerRef} // parent এর ভিতরে সীমাবদ্ধ
         dragElastic={0.2}
@@ -248,7 +248,7 @@ const PuffyCloud = ({ mood = 'IDLE' }) => {
           <div className="absolute inset-0 flex items-center justify-center pb-2">
             <div className="flex gap-2 items-center translate-y-1">
               {[0, 1].map(i => (
-                <div key={i} className="relative w-7 h-7">
+                <div key={i} className="relative w-4 h-7">
                   <motion.div
                     className="w-5 h-full bg-slate-900 rounded-full origin-center overflow-hidden relative"
                     variants={eyeVariants}
