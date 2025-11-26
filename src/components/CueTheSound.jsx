@@ -67,7 +67,7 @@ export default function CueTheSound() {
       <div className="w-full mt-16 overflow-hidden">
         <div
           ref={sliderRef}
-          className="w-full flex gap-26 overflow-x-auto scroll-smooth px-6 snap-x snap-mandatory"
+          className="w-full flex gap-28 overflow-x-auto scroll-smooth px-6 snap-x snap-mandatory"
           style={{ scrollbarWidth: 'none' }}
         >
           {videoData.map((v, i) => (

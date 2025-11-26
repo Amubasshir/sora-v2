@@ -77,7 +77,7 @@ const SoraShowcase = () => {
             ref={refs.climber}
             videoSources={[videoSources.B, videoSources.B2]}
             muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-[80%] sm:w-full h-[180px] sm:h-[240px] md:h-[300px] lg:h-[400px] xl:h-[430px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full sm:w-full h-[180px] sm:h-[240px] md:h-[300px] lg:h-[400px] xl:h-[430px] object-cover"
           />
           <button
             onClick={() => toggleMute('climber')}
@@ -125,12 +125,12 @@ const SoraShowcase = () => {
         </div>
 
         {/* Ballerina */}
-        <div className="col-span-1 absolute -mt-10 sm:-mt-20 md:mt-57 lg:mt-70 lg:ml-12 sm:ml-4 md:ml-6 hover:z-20">
+        <div className="col-span-1 absolute mt-37  sm:-mt-20 md:mt-57 lg:mt-73 lg:ml-6 sm:ml-4 md:ml-6 hover:z-20">
           <VideoSequencer
             ref={refs.ballerina}
             videoSources={[videoSources.C, videoSources.C2]}
             muted={muteState.ballerina}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-[280px] md:w-[188px] lg:w-[300px] h-[220px] sm:h-[260px] md:h-[340px] lg:h-[360px] xl:h-[390px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-[155px] sm:w-[280px] md:w-[188px] lg:w-[340px] h-[170px] sm:h-[260px] md:h-[286px] lg:h-[360px] xl:h-[390px] object-cover"
           />
           <button
             onClick={() => toggleMute('ballerina')}
