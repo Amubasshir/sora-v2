@@ -125,7 +125,7 @@ const SoraShowcase = () => {
         </div>
 
         {/* Ballerina */}
-        <div className="col-span-1 absolute mt-37  sm:-mt-20 md:mt-57 lg:mt-73 lg:ml-6 sm:ml-4 md:ml-6 hover:z-20">
+        <div className="col-span-1 absolute mt-37  sm:-mt-20 md:mt-57 lg:mt-73 lg:ml-6 sm:ml-4 ml-4 md:ml-6 hover:z-20">
           <VideoSequencer
             ref={refs.ballerina}
             videoSources={[videoSources.C, videoSources.C2]}
@@ -141,7 +141,7 @@ const SoraShowcase = () => {
         </div>
 
         {/* Clay */}
-        <div className="col-start-2 relative  sm:ml-4 md:ml-8">
+        <div className="col-start-2 relative ml-4 md:mt-10 md:ml-10">
           <VideoSequencer
             ref={refs.clay}
             videoSources={[videoSources.D, videoSources.D2]}

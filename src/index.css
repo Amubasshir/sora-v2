@@ -58,3 +58,34 @@
   font-family: opneAIExtraBold;
   src: url(../public/fonts/OpenSans-ExtraBold.ttf);
 } */
+/* Animated blue radial pulse used by the gradient overlay */
+/* @keyframes bluePulse {
+  0% {
+    background: radial-gradient(
+        circle at 40% 30%,
+        rgba(50, 88, 255, 0.5),
+        transparent 55%
+      ),
+      linear-gradient(180deg, rgba(3, 7, 18, 0.75), rgba(0, 0, 0, 0.9));
+  }
+  50% {
+    background: radial-gradient(
+        circle at 60% 40%,
+        rgba(60, 120, 255, 0.55),
+        transparent 60%
+      ),
+      linear-gradient(180deg, rgba(3, 7, 18, 0.6), rgba(0, 0, 0, 0.9));
+  }
+  100% {
+    background: radial-gradient(
+        circle at 40% 30%,
+        rgba(30, 60, 200, 0.3),
+        transparent 55%
+      ),
+      linear-gradient(180deg, rgba(3, 7, 18, 0.75), rgba(0, 0, 0, 0.9));
+  }
+}
+
+.animate-bluePulse {
+  animation: bluePulse 7s ease-in-out infinite;
+} */

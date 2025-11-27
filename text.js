@@ -8,6 +8,8 @@ import FutureCastComponent from './components/FutureCastComponent';
 import VideoCardSlider from './components/VideoCardSlider';
 import CueTheSound from './components/CueTheSound';
 import Footer from './components/Footer';
+// import CloudClickArea from './components/cloud/CloudClickArea';
+// import CloudArea from './components/cloud/CloudContext';
 
 // ---------------------------------------------------
 // STAR FIELD BACKGROUND
@@ -144,7 +146,7 @@ const StarField = () => {
 
         if (hovered) {
           const glow = 1 - dist / 60;
-          const size = star.size + glow * 12;
+          const size = star.size + glow * 3;
           ctx.globalAlpha = 1;
           drawStarShape(star.x, star.y, 5, size, size / 2);
           if (!star.triggered) {
@@ -196,73 +198,84 @@ const StarField = () => {
 // ---------------------------------------------------
 const LightBeam = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* ⭐ TOP BLUE GLOW — moves LEFT → RIGHT */}
-    <div className="absolute top-0 left-0 w-full h-[50%] pointer-events-none overflow-hidden">
-      <div className="absolute inset-0 bg-blue-500/30 blur-[580px] animate-blueGlowTop" />
-    </div>
-
-    {/* ⭐ BOTTOM BLUE GLOW — moves RIGHT → LEFT */}
-    <div className="absolute bottom-0 left-0 w-full h-[50%] pointer-events-none overflow-hidden">
-      <div className="absolute inset-0 bg-blue-500/30 blur-[580px] animate-blueGlowBottom" />
-    </div>
+    <div
+      className="absolute top-0 h-[200px] w-[500%] md:w-[200%] bg-gradient-to-r from-transparent via-blue-500/70 to-transparent"
+      style={{
+        animation: 'beam 40s linear infinite',
+        filter: 'blur(100px)',
+      }}
+    ></div>
 
     <style jsx global>{`
-      /* ⭐ TOP GLOW: LEFT → RIGHT */
-      @keyframes blueGlowTop {
+      @keyframes beam {
         0% {
-          transform: translateX(-20%) scale(1.25);
-          opacity: 0.35;
-        }
-        50% {
-          transform: translateX(20%) scale(1.3);
-          opacity: 0.55;
+          transform: translateX(-100%);
         }
         100% {
-          transform: translateX(-20%) scale(1.25);
-          opacity: 0.35;
+          transform: translateX(100%);
         }
-      }
-      .animate-blueGlowTop {
-        animation: blueGlowTop 14s ease-in-out infinite;
-      }
-
-      /* ⭐ BOTTOM GLOW: RIGHT → LEFT */
-      @keyframes blueGlowBottom {
-        0% {
-          transform: translateX(20%) scale(1.25);
-          opacity: 0.35;
-        }
-        50% {
-          transform: translateX(-20%) scale(1.3);
-          opacity: 0.55;
-        }
-        100% {
-          transform: translateX(20%) scale(1.25);
-          opacity: 0.35;
-        }
-      }
-      .animate-blueGlowBottom {
-        animation: blueGlowBottom 16s ease-in-out infinite;
       }
     `}</style>
   </div>
 );
 
 // ---------------------------------------------------
-// MAIN APP
+// APP COMPONENT WITH GLASSY LIGHTS (INCLUDING BLUE)
 // ---------------------------------------------------
 export default function App() {
   return (
     <div className="relative min-h-screen text-white overflow-hidden">
       {/* Starfield background */}
-      {/* ⭐ STARFIELD BACKGROUND */}
       <StarField />
 
-      {/* ⭐ LIGHT BEAM */}
+      {/* Light beam */}
       <LightBeam />
 
-      {/* ⭐ MAIN CONTENT (NOW VISIBLE) */}
-      <div className="relative z-10 max-w-[1400px] mx-auto overflow-hidden">
+      {/* Glassy floating lights */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute w-[600px] h-[600px] bg-white/20 rounded-full blur-[120px] top-[-100px] left-[-150px] animate-pulse-slow" />
+        <div className="absolute w-[400px] h-[400px] bg-blue-300/30 rounded-full blur-[100px] bottom-[-100px] right-[-100px] animate-pulse-slower" />
+        <div className="absolute w-[500px] h-[500px] bg-purple-300/20 rounded-full blur-[150px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] animate-pulse-slow" />
+
+        {/* NEW BLUE GLASSY LIGHT */}
+        <div className="absolute w-[450px] h-[450px] bg-blue-400/20 rounded-full blur-[140px] top-[20%] left-[60%] animate-pulse-slower" />
+
+        <style jsx>{`
+          @keyframes pulse-slow {
+            0%,
+            100% {
+              transform: scale(1) translate(0, 0);
+              opacity: 0.6;
+            }
+            50% {
+              transform: scale(1.1) translate(10px, -10px);
+              opacity: 0.4;
+            }
+          }
+          @keyframes pulse-slower {
+            0%,
+            100% {
+              transform: scale(1) translate(0, 0);
+              opacity: 0.5;
+            }
+            50% {
+              transform: scale(1.05) translate(-10px, 10px);
+              opacity: 0.3;
+            }
+          }
+          .animate-pulse-slow {
+            animation: pulse-slow 12s ease-in-out infinite;
+          }
+          .animate-pulse-slower {
+            animation: pulse-slower 18s ease-in-out infinite;
+          }
+        `}</style>
+      </div>
+      {/* Main content */}
+
+      {/* <CloudArea>
+        <CloudClickArea> */}
+      <div className="max-w-[1400px] mx-auto overflow-hidden">
         <Navbar />
         <Banner />
         <SoraShowcase />
@@ -271,6 +284,8 @@ export default function App() {
         <CueTheSound />
         <Footer />
       </div>
+      {/* </CloudClickArea>
+      </CloudArea> */}
     </div>
   );
 }

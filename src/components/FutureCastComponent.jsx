@@ -69,8 +69,8 @@ const FutureCastComponent = () => {
         {/* 💬 Bottom Caption/Prompt Bubble with Typing Animation */}
 
         <div
-          className="absolute md:-bottom-12 left-10/30 lg:left-2/12 -translate-x-1/2 p-3 px-6  rounded-full 
-                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none md:-ml-12 lg:ml-86 ml-86"
+          className="absolute bottom-61 md:-bottom-4 md:left-10/30 lg:left-1/12 md:-translate-x-1/2 p-3 px-6  rounded-full 
+                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none md:-ml-12 lg:ml-86 "
         >
           {/* <div className="flex items-center">
             <TextType

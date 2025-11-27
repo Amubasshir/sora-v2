@@ -256,59 +256,59 @@ const MentionApp = () => {
     // Full screen setup with transparent background and centered content
     <div className="relative  flex items-center justify-center">
       {/* This wrapper is now centered by the parent flex container */}
-      <div className="w-[80%] max-w-lg p-4">
-        {/* The Mention Suggestions Box and Input Wrapper */}
-        <div className="relative">
-          <MentionSuggestions
-            show={showSuggestions && !isTypingPaused}
-            mentionPrefix={mentionPrefix}
-            onSelect={handleSelectSuggestion} // Pass selection handler
-          />
+      {/* <div className="w-[80%]  p-4"> */}
+      {/* The Mention Suggestions Box and Input Wrapper */}
+      <div className="">
+        <MentionSuggestions
+          show={showSuggestions && !isTypingPaused}
+          mentionPrefix={mentionPrefix}
+          onSelect={handleSelectSuggestion} // Pass selection handler
+        />
 
-          {/* Input Bar Structure */}
-          <div
-            className="p-3 px-6  bgnav rounded-full 
+        {/* Input Bar Structure */}
+        <div
+          className="p-3 px-6 bgnav rounded-full 
                        text-sm text-white font-medium flex items-center justify-between space-x-3 
                        shadow-2xl  relative z-20"
-          >
-            <div className="flex items-center flex-grow">
-              {/* Text Typing Animation Component */}
-              <TextType
-                text={isTypingPaused ? currentText : fullText} // Use currentText if paused, else use fullText for typing
-                typingSpeed={150}
-                showCursor={true}
-                cursorCharacter="|"
-                onTypeUpdate={handleTypeUpdate}
-                isPaused={isTypingPaused} // Pass pause state
-              />
-            </div>
-
-            {/* Up Arrow Icon / Send Button */}
-            <motion.div
-              className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer 
-                         transition-all duration-300 hover:bg-yellow-400"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <svg
-                className="w-4 h-4 text-gray-800"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                ></path>
-              </svg>
-            </motion.div>
+        >
+          <div className="flex items-center flex-grow">
+            {/* Text Typing Animation Component */}
+            <TextType
+              text={isTypingPaused ? currentText : fullText} // Use currentText if paused, else use fullText for typing
+              typingSpeed={150}
+              showCursor={true}
+              cursorCharacter="|"
+              onTypeUpdate={handleTypeUpdate}
+              isPaused={isTypingPaused} // Pass pause state
+            />
           </div>
+
+          {/* Up Arrow Icon / Send Button */}
+          <motion.div
+            className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer 
+                         transition-all duration-300 hover:bg-yellow-400"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <svg
+              className="w-4 h-4 text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              ></path>
+            </svg>
+          </motion.div>
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 
