@@ -1,5 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
-
+import { useRef, useState } from 'react';
 import TextType from './TextType';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -40,14 +39,6 @@ export default function VideoSlider() {
     }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex(prev => (prev + 1) % videos.length);
-    }, 6000); // change every 6 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative mx-auto w-full pb-[140px] md:pb-[130px]">
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center pb-[140px] md:pb-[60px] md:mt-[160px]">
@@ -67,7 +58,7 @@ export default function VideoSlider() {
         {/* RIGHT SIDE */}
         <div className="relative flex justify-center flex-col items-center gap-5 px-4">
           {/* TYPING TEXT */}
-          <div className="absolute left-10 md:-left-20 bottom-10 md:bottom-20 inline-block z-20">
+          <div className="absolute -left-20 bottom-20 inline-block z-20">
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -111,47 +102,23 @@ export default function VideoSlider() {
             className="relative rounded-3xl overflow-hidden bgnav border border-gray-700"
             style={{ width: 320, height: 540 }}
           >
+            <video
+              key={index}
+              src={videos[index].src}
+              autoPlay
+              muted={isMuted}
+              ref={videoRef}
+              loop
+              className="w-full h-full object-cover"
+            />
+
             {/* MUTE BUTTON */}
             <button
               onClick={toggleMute}
-              className="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-2 rounded-full text-white text-sm border border-white/30 z-30"
+              className="absolute bottom-4 right-4 bg-black/60 backdrop-blur px-3 py-2 rounded-full text-white text-sm border border-white/30 z-30"
             >
               {isMuted ? '🔇' : '🔊'}
             </button>
-
-            <AnimatePresence mode="wait">
-              <motion.video
-                key={index}
-                ref={videoRef}
-                src={videos[index].src}
-                autoPlay
-                muted={isMuted}
-                loop
-                className="w-full h-full object-cover absolute inset-0"
-                initial={{
-                  opacity: 0,
-                  x: 40,
-                  scale: 0.96,
-                  filter: 'blur(6px)',
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                  scale: 1,
-                  filter: 'blur(0px)',
-                }}
-                exit={{
-                  opacity: 0,
-                  x: -40,
-                  scale: 0.96,
-                  filter: 'blur(6px)',
-                }}
-                transition={{
-                  duration: 0.7,
-                  ease: [0.22, 1, 0.36, 1], // smooth cinematic easing
-                }}
-              />
-            </AnimatePresence>
 
             {/* DOTS INSIDE VIDEO */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">

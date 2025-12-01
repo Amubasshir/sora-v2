@@ -7,7 +7,7 @@ import CloudCharacter from './CloudCharacter';
 
 const Banner = () => {
   return (
-    <div className="min-h-screen text-white flex items-center justify-center p-4 overflow-hidden relative pt-25 leading-tight">
+    <div className="min-h-[100vh] text-white flex items-center justify-center p-4 overflow-hidden relative md:pt-25 leading-tight">
       <div className="z-10 text-center max-w-lg mx-auto">
         <div className="flex justify-center -mt-4">
           <CloudCharacter />

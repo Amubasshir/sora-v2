@@ -21,10 +21,16 @@ const SoraShowcase = () => {
 
   const toggleMute = key => {
     const newVal = !muteState[key];
-    setMuteState({ ...muteState, [key]: newVal });
 
-    if (refs[key].current) {
-      refs[key].current.muted = newVal;
+    setMuteState(prev => ({ ...prev, [key]: newVal }));
+
+    const video = refs[key].current;
+    if (video) {
+      video.muted = newVal;
+
+      // This is the critical fix for browser audio policy
+      video.currentTime = video.currentTime;
+      video.play().catch(() => {});
     }
   };
 
@@ -54,41 +60,43 @@ const SoraShowcase = () => {
       </div>
 
       {/* RIGHT GRID */}
-      <div className="w-full md:w-1/2 grid grid-cols-2 gap-3 relative">
+      <div className="w-full md:w-1/2 grid grid-cols-2 gap-8 relative">
         {/* Cowboy */}
-        <div className="relative">
+        <div className="relative -ml-10">
+          <button
+            onClick={() => toggleMute('cowboy')}
+            className="absolute top-3  right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
+          >
+            {muteState.cowboy ? '🔇' : '🔊'}
+          </button>
+
           <VideoSequencer
             ref={refs.cowboy}
             videoSources={[videoSources.A, videoSources.A2]}
             muted={muteState.cowboy}
-            videoClassName="rounded-2xl shadow-xl w-full h-[140px] sm:h-[180px] md:h-[220px] lg:h-[250px] xl:h-[270px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full h-[190px] sm:h-[180px] md:h-[220px] lg:h-[250px] xl:h-[270px] object-cover"
           />
-          <button
-            onClick={() => toggleMute('cowboy')}
-            className="absolute bottom-44 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
-          >
-            {muteState.cowboy ? '🔇' : '🔊'}
-          </button>
         </div>
 
         {/* Climber */}
-        <div className="relative z-10">
+        <div className="relative z-10 ">
+          <button
+            onClick={() => toggleMute('climber')}
+            className="absolute top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
+          >
+            {muteState.climber ? '🔇' : '🔊'}
+          </button>
+
           <VideoSequencer
             ref={refs.climber}
             videoSources={[videoSources.B, videoSources.B2]}
             muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-full h-[180px] sm:h-[240px] md:h-[300px] lg:h-[400px] xl:h-[430px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full sm:w-full h-[280px] lg:h-[400px] xl:h-[430px] object-cover"
           />
-          <button
-            onClick={() => toggleMute('climber')}
-            className="absolute bottom-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20"
-          >
-            {muteState.climber ? '🔇' : '🔊'}
-          </button>
         </div>
 
         {/* Floating Text */}
-        <div className="absolute bottom-[45%] left-1/2 -translate-x-1/2 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
+        <div className="absolute bottom-[45%]  left-25 lg:left-35 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
           <TextType
             text={[
               'Create a hillarious video',
@@ -125,35 +133,36 @@ const SoraShowcase = () => {
         </div>
 
         {/* Ballerina */}
-        <div className="col-span-1 absolute mt-37  sm:-mt-20 md:mt-57 lg:mt-73 lg:ml-6 sm:ml-4 ml-4 md:ml-6 hover:z-20">
+        <div className="col-span-1 absolute mt-54 sm:-mt-20 md:mt-57 lg:mt-73 lg:-ml-12 xl:ml-6 -ml-4 sm:ml-4  md:ml-6 hover:z-20">
+          <button
+            onClick={() => toggleMute('ballerina')}
+            className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
+          >
+            {muteState.ballerina ? '🔇' : '🔊'}
+          </button>
           <VideoSequencer
             ref={refs.ballerina}
             videoSources={[videoSources.C, videoSources.C2]}
             muted={muteState.ballerina}
-            videoClassName="rounded-2xl shadow-xl w-[155px] sm:w-[280px] md:w-[188px] lg:w-[340px] h-[170px] sm:h-[260px] md:h-[286px] lg:h-[360px] xl:h-[390px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-[260px] sm:w-[280px] md:w-[188px] lg:w-[340px] h-[270px] sm:h-[260px] md:h-[286px] lg:h-[360px] xl:h-[390px] object-cover"
           />
-          <button
-            onClick={() => toggleMute('ballerina')}
-            className="absolute bottom-2 sm:bottom-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20"
-          >
-            {muteState.ballerina ? '🔇' : '🔊'}
-          </button>
         </div>
 
         {/* Clay */}
-        <div className="col-start-2 relative ml-4 md:mt-10 md:ml-10">
+        <div className="col-start-2 relative pl-10 md:pl-0 md:-mr-0 -mr-4 md:mt-0 md:ml-10">
+          <button
+            onClick={() => toggleMute('clay')}
+            className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
+          >
+            {muteState.clay ? '🔇' : '🔊'}
+          </button>
+
           <VideoSequencer
             ref={refs.clay}
             videoSources={[videoSources.D, videoSources.D2]}
             muted={muteState.clay}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-[220px] md:w-full h-[120px] sm:h-[150px] md:h-[200px] lg:h-[220px] xl:h-[240px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full sm:w-[220px] md:w-full h-[140px] sm:h-[150px] md:h-[200px] lg:h-[220px] xl:h-[240px] object-cover"
           />
-          <button
-            onClick={() => toggleMute('clay')}
-            className="absolute bottom-2 sm:bottom-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20"
-          >
-            {muteState.clay ? '🔇' : '🔊'}
-          </button>
         </div>
       </div>
     </section>

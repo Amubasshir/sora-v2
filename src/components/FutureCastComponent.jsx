@@ -1,9 +1,12 @@
 import './FutureCastComponent.css';
 import MentionSuggestions from './MentionSuggestions';
-
+import { useRef, useState } from 'react';
 // import TextType from './TextType';
 
 const FutureCastComponent = () => {
+  const videoRef = useRef(null);
+  const [muted, setMuted] = useState(true);
+
   // Use a simulated video/image URL for the main backdrop and avatars
   const videoUrl =
     'https://cdn.openai.com/nf2/nf2-blog/nf2-blog-cameos/5eb66c14-86d6-45f5-8ea6-610939ba491b/cameo1-2.mp4';
@@ -13,6 +16,23 @@ const FutureCastComponent = () => {
     'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
   // The text array to be animated, simulating the typing effect
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+
+    const nextMuted = !muted;
+    setMuted(nextMuted);
+
+    // directly update the video element
+    videoRef.current.muted = nextMuted;
+
+    // If unmuting, try to play the video to enable sound
+    if (!nextMuted) {
+      videoRef.current.play().catch(() => {
+        console.log('Autoplay prevented. User interaction required.');
+      });
+    }
+  };
 
   return (
     // 🌌 Outer container: Black background with subtle texture
@@ -33,14 +53,22 @@ const FutureCastComponent = () => {
           <div className="relative  max-w-[lg]">
             {/* 📹 Main Video Frame */}
             <div className="rounded-2xl overflow-hidden ">
+              <button
+                onClick={toggleMute}
+                className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full z-10"
+              >
+                {muted ? '🔇' : '🔊'}
+              </button>
+
               <video
+                ref={videoRef}
                 src={videoUrl}
                 autoPlay
                 loop
-                muted
+                muted={muted} // keep synced with state
                 playsInline
                 poster="path/to/fallback-image.jpg"
-                className="w-full h-auto object-cover md:h-[600px] aspect-[9/16] md:aspect-auto bg-gray-900"
+                className="w-full h-auto object-cover md:h-[550px] aspect-[9/16] md:aspect-auto bg-gray-900"
                 style={{ objectPosition: 'center 40%' }}
               >
                 <source src={videoUrl} type="video/mp4" />
@@ -49,18 +77,18 @@ const FutureCastComponent = () => {
             </div>
 
             {/* 👤 Avatar Overlays (Top-Left) */}
-            <div className="absolute -top-5 left-8 flex flex-col space-y-2">
+            <div className="absolute -top-8 left-12 flex flex-col space-y-2">
               <img
                 src={minniaAvatarUrl}
                 alt="Minnia's avatar"
-                className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-lg"
+                className="w-17 h-17 rounded-full border-2 border-white object-cover shadow-lg"
               />
             </div>
-            <div className="absolute top-8 -left-7 flex flex-col space-y-2">
+            <div className="absolute top-10 -left-10 flex flex-col space-y-2">
               <img
                 src={thomasAvatarUrl}
                 alt="Thomas's avatar"
-                className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-md translate-x-2"
+                className="w-17 h-17 rounded-full border-2 border-white object-cover shadow-md translate-x-2"
               />
             </div>
           </div>
@@ -69,37 +97,9 @@ const FutureCastComponent = () => {
         {/* 💬 Bottom Caption/Prompt Bubble with Typing Animation */}
 
         <div
-          className="absolute bottom-61 md:-bottom-4 md:left-10/30 lg:left-1/12 md:-translate-x-1/2 p-3 px-6  rounded-full 
-                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none md:-ml-12 lg:ml-86 "
+          className="absolute bottom-52 md:-bottom-4 md:left-10/30 lg:left-1/12 md:-translate-x-1/2 p-3 px-6  rounded-full 
+                         text-sm text-white font-medium flex items-center space-x-3 max-w-full md:max-w-none md:-ml-12 lg:ml-86 "
         >
-          {/* <div className="flex items-center">
-            <TextType
-              text={['@minnia and @thomas in a retro futuristic world|']}
-              typingSpeed={75}
-              pauseDuration={1500}
-              showCursor={true}
-              cursorCharacter="|"
-            />
-          </div>
-
-          {/* Up Arrow Icon */}
-          {/* <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer">
-            <svg
-              className="w-3 h-3 text-black"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              ></path>
-            </svg>
-          </div> */}
-
           <MentionSuggestions></MentionSuggestions>
         </div>
 

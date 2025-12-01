@@ -252,12 +252,27 @@ const MentionApp = () => {
     [currentText, lastAtIndex]
   );
 
+  const screenShowVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+
   return (
     // Full screen setup with transparent background and centered content
-    <div className="relative  flex items-center justify-center">
-      {/* This wrapper is now centered by the parent flex container */}
-      {/* <div className="w-[80%]  p-4"> */}
-      {/* The Mention Suggestions Box and Input Wrapper */}
+    <motion.div
+      className="relative flex items-center justify-center"
+      variants={screenShowVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="">
         <MentionSuggestions
           show={showSuggestions && !isTypingPaused}
@@ -307,7 +322,8 @@ const MentionApp = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
+
     // </div>
   );
 };
