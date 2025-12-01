@@ -44,7 +44,7 @@ const Navbar = () => {
         </div>
 
         {/* CENTER NAV */}
-        <div className="bgnav backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full flex items-center shadow-2xl border border-white/10 gap-6 sm:gap-10 md:gap-20 lg:gap-28">
+        <div className="bgnav backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full flex items-center shadow-2xl border border-white/10 gap-5 sm:gap-10 md:gap-20 lg:gap-28">
           <a className="text-white font-semibold text-lg sm:text-xl md:text-3xl cursor-pointer">
             <svg
               width="109"
@@ -62,11 +62,11 @@ const Navbar = () => {
           </a>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <a className="px-2 sm:px-3 py-1 text-white text-xs sm:text-sm md:text-base cursor-pointer">
+            <a className="px-2 sm:px-3 py-1 text-white  cursor-pointer">
               Download
             </a>
 
-            <button className="px-3 sm:px-4 md:px-5 py-1.5 bgbtn text-white font-semibold rounded-full hover:bg-gray-900 text-xs sm:text-sm md:text-base shadow-lg flex items-center">
+            <button className="px-5 py-2 bgbtn text-white rounded-full hover:bg-gray-900 shadow-lg flex items-center">
               {/* <LogIn className="w-3 h-3 sm:w-4 sm:h-4 mr-1 hidden sm:inline" /> */}
               Login
             </button>

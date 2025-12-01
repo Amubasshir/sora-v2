@@ -40,7 +40,7 @@ const FutureCastComponent = () => {
       ></div>
 
       {/* 💻 Main Layout Container */}
-      <div className="relative z-10 max-w-7xl w-full grid md:grid-cols-2 gap-16 lg:gap-60 items-center">
+      <div className="relative z-10  w-full grid md:grid-cols-2 gap-16 lg:gap-60 items-center">
         {/* 🎥 Left Section: Video and Avatars */}
         <div className="flex justify-center md:justify-end order-2 md:order-1">
           <div className="relative  max-w-[lg]">
@@ -90,15 +90,15 @@ const FutureCastComponent = () => {
         {/* 💬 Bottom Caption/Prompt Bubble with Typing Animation */}
 
         <div
-          className="absolute bottom-0 md:-bottom-4 md:left-10/30 lg:left-2/12 md:-translate-x-1/2 p-3 px-6  rounded-full
-                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none md:-ml-12 lg:ml-86 "
+          className="absolute bottom-0 md:-bottom-4 md:left-10/30 lg:left-2/12 md:-translate-x-1/2 p-1 ms:px-6  rounded-full
+                         text-sm text-white font-medium flex items-center space-x-3 md:max-w-[90%]  md:-ml-12 lg:ml-86 "
         >
           <MentionSuggestions></MentionSuggestions>
         </div>
 
         {/* 📝 Right Section: Text Content */}
         <div className="relative  order-1 md:order-2 flex justify-start">
-          <div className="max-w-md space-y-6">
+          <div className=" space-y-6 -ml-3">
             <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
               Cast yourself and your friends
             </h1>

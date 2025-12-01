@@ -49,10 +49,10 @@ const SoraShowcase = () => {
     <section className="py-12 px-2 md:py-24 text-white flex flex-col md:flex-row items-center gap-8 md:gap-20">
       {/* LEFT TEXT */}
       <div className="relative flex flex-col gap-4 text-white w-full md:max-w-[40%] px-3">
-        <h1 className="text-[24px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-medium leading-tight">
+        <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
           From words to worlds
         </h1>
-        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-snug">
+        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
           Start with a prompt or upload an image <br /> to create videos with
           unprecedented <br /> realism in any style: cinematic, <br /> animated,
           photorealistic, or surreal.

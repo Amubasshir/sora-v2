@@ -52,7 +52,7 @@ export default function VideoSlider() {
     <section className="relative mx-auto w-full pb-[140px] md:pb-[130px]">
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center pb-[15px] md:mt-[160px]">
         {/* LEFT TEXT */}
-        <div className="px-3">
+        <div className="px-5">
           <h2 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px] mb-5">
             Remix everything
           </h2>
