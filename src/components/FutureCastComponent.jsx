@@ -21,19 +21,12 @@ const FutureCastComponent = () => {
     if (!videoRef.current) return;
 
     const nextMuted = !muted;
-    setMuted(nextMuted);
-
-    // directly update the video element
     videoRef.current.muted = nextMuted;
 
-    // If unmuting, try to play the video to enable sound
-    if (!nextMuted) {
-      videoRef.current.play().catch(() => {
-        console.log('Autoplay prevented. User interaction required.');
-      });
-    }
+    // Play again to ensure sound works after user interaction
+    videoRef.current.play().catch(() => {});
+    setMuted(nextMuted);
   };
-
   return (
     // 🌌 Outer container: Black background with subtle texture
     <div className="min-h-screen  text-white flex items-center justify-center p-8 overflow-hidden relative">
@@ -49,13 +42,13 @@ const FutureCastComponent = () => {
       {/* 💻 Main Layout Container */}
       <div className="relative z-10 max-w-7xl w-full grid md:grid-cols-2 gap-16 lg:gap-60 items-center">
         {/* 🎥 Left Section: Video and Avatars */}
-        <div className="flex justify-center md:justify-end">
+        <div className="flex justify-center md:justify-end order-2 md:order-1">
           <div className="relative  max-w-[lg]">
             {/* 📹 Main Video Frame */}
             <div className="rounded-2xl overflow-hidden ">
               <button
                 onClick={toggleMute}
-                className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full z-10"
+                className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm border border-white/20 z-30"
               >
                 {muted ? '🔇' : '🔊'}
               </button>
@@ -65,7 +58,7 @@ const FutureCastComponent = () => {
                 src={videoUrl}
                 autoPlay
                 loop
-                muted={muted} // keep synced with state
+                muted={muted}
                 playsInline
                 poster="path/to/fallback-image.jpg"
                 className="w-full h-auto object-cover md:h-[550px] aspect-[9/16] md:aspect-auto bg-gray-900"
@@ -97,14 +90,14 @@ const FutureCastComponent = () => {
         {/* 💬 Bottom Caption/Prompt Bubble with Typing Animation */}
 
         <div
-          className="absolute bottom-52 md:-bottom-4 md:left-10/30 lg:left-1/12 md:-translate-x-1/2 p-3 px-6  rounded-full 
-                         text-sm text-white font-medium flex items-center space-x-3 max-w-full md:max-w-none md:-ml-12 lg:ml-86 "
+          className="absolute bottom-0 md:-bottom-4 md:left-10/30 lg:left-2/12 md:-translate-x-1/2 p-3 px-6  rounded-full
+                         text-sm text-white font-medium flex items-center space-x-3 max-w-[90%] md:max-w-none md:-ml-12 lg:ml-86 "
         >
           <MentionSuggestions></MentionSuggestions>
         </div>
 
         {/* 📝 Right Section: Text Content */}
-        <div className="relative md:col-start-2 flex justify-start">
+        <div className="relative  order-1 md:order-2 flex justify-start">
           <div className="max-w-md space-y-6">
             <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
               Cast yourself and your friends
