@@ -91,7 +91,7 @@ const SoraShowcase = () => {
             ref={refs.climber}
             videoSources={[videoSources.B, videoSources.B2]}
             muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-full h-[280px] lg:h-[400px] xl:h-[430px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full sm:w-[90%] h-[280px] lg:h-[380px] xl:h-[430px] object-cover"
           />
         </div>
 
@@ -133,7 +133,7 @@ const SoraShowcase = () => {
         </div>
 
         {/* Ballerina */}
-        <div className="col-span-1 absolute mt-54 sm:-mt-20 md:mt-57 lg:mt-73 lg:-ml-12 xl:ml-6 -ml-4 sm:ml-4  md:ml-6 hover:z-20">
+        <div className="col-span-1 absolute mt-54 sm:mt-53 md:mt-57 lg:mt-73 lg:-ml-12 xl:ml-10 -ml-4 sm:ml-22  md:-ml-5 hover:z-20">
           <button
             onClick={() => toggleMute('ballerina')}
             className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
@@ -144,7 +144,7 @@ const SoraShowcase = () => {
             ref={refs.ballerina}
             videoSources={[videoSources.C, videoSources.C2]}
             muted={muteState.ballerina}
-            videoClassName="rounded-2xl shadow-xl w-[260px] sm:w-[280px] md:w-[188px] lg:w-[340px] h-[270px] sm:h-[260px] md:h-[286px] lg:h-[360px] xl:h-[390px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-[260px] sm:w-[280px] md:w-[250px] lg:w-[340px] h-[270px] sm:h-[260px] md:h-[250px] lg:h-[360px] xl:h-[390px] object-cover"
           />
         </div>
 
