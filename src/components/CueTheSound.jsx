@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { HiVolumeOff, HiVolumeUp } from 'react-icons/hi';
+import { VolumeOff } from 'lucide-react';
+import { Volume2 } from 'lucide-react';
 
 export default function CueTheSound() {
   const sliderRef = useRef(null);
@@ -124,7 +125,7 @@ function VideoCard({ src, isEdge }) {
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium border border-white/20"
         >
           Play sound
-          {playingSound ? <HiVolumeUp /> : <HiVolumeOff />}
+          {playingSound ? <Volume2 size={18} /> : <VolumeOff size={18} />}
         </button>
       )}
     </div>

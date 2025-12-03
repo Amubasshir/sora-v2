@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-
+import { VolumeOff } from 'lucide-react';
+import { Volume2 } from 'lucide-react';
 import TextType from './TextType';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -76,7 +77,7 @@ export default function VideoSlider() {
               <TextType
                 key={index}
                 text={[videos[index].title]}
-                typingSpeed={75}
+                typingSpeed={110}
                 pauseDuration={1500}
                 showCursor={true}
                 cursorCharacter="|"
@@ -116,7 +117,7 @@ export default function VideoSlider() {
               onClick={toggleMute}
               className="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-2 rounded-full text-white text-sm border border-white/30 z-30"
             >
-              {isMuted ? '🔇' : '🔊'}
+              {isMuted ? <VolumeOff size={18} /> : <Volume2 size={18} />}
             </button>
 
             <AnimatePresence mode="wait">

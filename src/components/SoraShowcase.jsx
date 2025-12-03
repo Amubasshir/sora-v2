@@ -1,5 +1,6 @@
 'use client';
-
+import { VolumeOff } from 'lucide-react';
+import { Volume2 } from 'lucide-react';
 import React, { useRef, useState } from 'react';
 import TextType from './TextType';
 import VideoSequencer from './VideoSequencer';
@@ -67,7 +68,7 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('cowboy')}
             className="absolute top-3  right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.cowboy ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer
@@ -82,9 +83,9 @@ const SoraShowcase = () => {
         <div className="relative z-10 ">
           <button
             onClick={() => toggleMute('climber')}
-            className="absolute top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
+            className="absolute top-3 right-12 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.climber ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer
@@ -96,14 +97,14 @@ const SoraShowcase = () => {
         </div>
 
         {/* Floating Text */}
-        <div className="absolute bottom-[45%]  left-25 lg:left-35 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
+        <div className="absolute bottom-[45%]  left-25 lg:left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
           <TextType
             text={[
               'Create a hillarious video',
               'Create a funny video',
               'Create a cinematic scene',
             ]}
-            typingSpeed={75}
+            typingSpeed={110}
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
@@ -138,7 +139,7 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('ballerina')}
             className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.ballerina ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
           <VideoSequencer
             ref={refs.ballerina}
@@ -154,7 +155,7 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('clay')}
             className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.clay ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer

@@ -2,7 +2,8 @@ import './FutureCastComponent.css';
 import MentionSuggestions from './MentionSuggestions';
 import { useRef, useState } from 'react';
 // import TextType from './TextType';
-
+import { VolumeOff } from 'lucide-react';
+import { Volume2 } from 'lucide-react';
 const FutureCastComponent = () => {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
@@ -50,7 +51,7 @@ const FutureCastComponent = () => {
                 onClick={toggleMute}
                 className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm border border-white/20 z-30"
               >
-                {muted ? '🔇' : '🔊'}
+                {muted ? <VolumeOff size={18} /> : <Volume2 size={18} />}
               </button>
 
               <video
