@@ -1,5 +1,6 @@
 'use client';
-
+import { VolumeOff } from 'lucide-react';
+import { Volume2 } from 'lucide-react';
 import React, { useRef, useState } from 'react';
 import TextType from './TextType';
 import VideoSequencer from './VideoSequencer';
@@ -49,10 +50,10 @@ const SoraShowcase = () => {
     <section className="py-12 px-2 md:py-24 text-white flex flex-col md:flex-row items-center gap-8 md:gap-20">
       {/* LEFT TEXT */}
       <div className="relative flex flex-col gap-4 text-white w-full md:max-w-[40%] px-3">
-        <h1 className="text-[24px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-medium leading-tight">
+        <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
           From words to worlds
         </h1>
-        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-snug">
+        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
           Start with a prompt or upload an image <br /> to create videos with
           unprecedented <br /> realism in any style: cinematic, <br /> animated,
           photorealistic, or surreal.
@@ -67,7 +68,7 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('cowboy')}
             className="absolute top-3  right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.cowboy ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer
@@ -82,28 +83,28 @@ const SoraShowcase = () => {
         <div className="relative z-10 ">
           <button
             onClick={() => toggleMute('climber')}
-            className="absolute top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
+            className="absolute top-3 right-12 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.climber ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer
             ref={refs.climber}
             videoSources={[videoSources.B, videoSources.B2]}
             muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-full h-[280px] lg:h-[400px] xl:h-[430px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-full sm:w-[90%] h-[280px] lg:h-[380px] xl:h-[430px] object-cover"
           />
         </div>
 
         {/* Floating Text */}
-        <div className="absolute bottom-[45%]  left-25 lg:left-35 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
+        <div className="absolute bottom-[45%]  left-25 lg:left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
           <TextType
             text={[
               'Create a hillarious video',
               'Create a funny video',
               'Create a cinematic scene',
             ]}
-            typingSpeed={75}
+            typingSpeed={110}
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
@@ -133,18 +134,18 @@ const SoraShowcase = () => {
         </div>
 
         {/* Ballerina */}
-        <div className="col-span-1 absolute mt-54 sm:-mt-20 md:mt-57 lg:mt-73 lg:-ml-12 xl:ml-6 -ml-4 sm:ml-4  md:ml-6 hover:z-20">
+        <div className="col-span-1 absolute mt-54 sm:mt-53 md:mt-57 lg:mt-73 lg:-ml-12 xl:ml-10 -ml-4 sm:ml-22  md:-ml-5 hover:z-20">
           <button
             onClick={() => toggleMute('ballerina')}
             className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.ballerina ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
           <VideoSequencer
             ref={refs.ballerina}
             videoSources={[videoSources.C, videoSources.C2]}
             muted={muteState.ballerina}
-            videoClassName="rounded-2xl shadow-xl w-[260px] sm:w-[280px] md:w-[188px] lg:w-[340px] h-[270px] sm:h-[260px] md:h-[286px] lg:h-[360px] xl:h-[390px] object-cover"
+            videoClassName="rounded-2xl shadow-xl w-[260px] sm:w-[280px] md:w-[250px] lg:w-[340px] h-[270px] sm:h-[260px] md:h-[250px] lg:h-[360px] xl:h-[390px] object-cover"
           />
         </div>
 
@@ -154,7 +155,7 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('clay')}
             className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.clay ? '🔇' : '🔊'}
+            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer
@@ -162,159 +163,6 @@ const SoraShowcase = () => {
             videoSources={[videoSources.D, videoSources.D2]}
             muted={muteState.clay}
             videoClassName="rounded-2xl shadow-xl w-full sm:w-[220px] md:w-full h-[140px] sm:h-[150px] md:h-[200px] lg:h-[220px] xl:h-[240px] object-cover"
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default SoraShowcase;
-
-
-'use client';
-
-import React, { useRef, useState } from 'react';
-import TextType from './TextType';
-import VideoSequencer from './VideoSequencer';
-import { motion } from 'framer-motion';
-
-const SoraShowcase = () => {
-  const [muteState, setMuteState] = useState({
-    cowboy: true,
-    climber: true,
-    ballerina: true,
-    clay: true,
-  });
-
-  const refs = {
-    cowboy: useRef(null),
-    climber: useRef(null),
-    ballerina: useRef(null),
-    clay: useRef(null),
-  };
-
-  const toggleMute = key => {
-    const newVal = !muteState[key];
-    setMuteState(prev => ({ ...prev, [key]: newVal }));
-
-    const video = refs[key].current;
-    if (video) {
-      video.muted = newVal;
-      video.currentTime = video.currentTime;
-      video.play().catch(() => {});
-    }
-  };
-
-  const videoSources = {
-    A: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/dfe39237-58e5-4119-a639-0a8884e853e4/20250917_1849_a%20western%20cowboy%20sits%20on%20a%20horse%20at%20golden%20hour.%20Slow%20push-in%20on%20the%20cowboy%20as%20he%20says,%20_one%20day%20wit_simple_compose_01k5d85mhffmbsby6z3zff0jxx%20(1).mp4',
-    A2: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/4544fb23-bfdb-4f39-a226-cbf7bc022cf5/20250925_2005_New%20Video_simple_compose_01k61zpm1jesn8d3wksf7vv35g.mp4',
-    B: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/eca52501-ab5d-44de-8989-7390969c16bd/20250928_1527_New%20Video_simple_compose_01k696zzdheaaa9n17e2g2dyn9.mp4',
-    B2: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-audio/4f7b652a-6db1-4ead-86fe-f3a88ba45963/20250928_1750_New%20Video_simple_compose_01k69f5bhrfb6rs9027f5nzrre.mp4',
-    C: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/4544fb23-bfdb-4f39-a226-cbf7bc022cf5/20250819_1450_ballerina.%20cinematic_simple_compose_01k32501vnfk39f4bs4f9x740h.mp4',
-    C2: 'https://openaiassets.blob.core.windows.net/$web/nf2/nf2-lp/nf2-lp-hero/eca52501-ab5d-44de-8989-7390969c16bd/20250928_1502_New%20Video_simple_compose_01k695hnqxe6d98e6qjhte7wgm.mp4',
-    D: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/dfe39237-58e5-4119-a639-0a8884e853e4/20250918_1431_a%20claymation%20conductor%20conducts%20a%20claymation%20orchestra_simple_compose_01k5fbtf2cfrtvxgmj5fv44r02.mp4',
-    D2: 'https://openaiassets.blob.core.windows.net/$web/nf2/nf2-lp/nf2-lp-hero/eca52501-ab5d-44de-8989-7390969c16bd/20250928_1508_New%20Video_simple_compose_01k695xxtae1h9hftz1jprsc0m.mp4',
-  };
-
-  return (
-    <section className="py-12 px-4 md:py-24 text-white flex flex-col md:flex-row items-center gap-10 md:gap-20 overflow-hidden">
-      {/* LEFT TEXT */}
-      <div className="flex flex-col gap-4 w-full md:max-w-[40%] text-center md:text-left">
-        <h1 className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-[40px] font-medium">
-          From words to worlds
-        </h1>
-        <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px]">
-          Start with a prompt or upload an image to create videos with
-          unprecedented realism in any style.
-        </p>
-      </div>
-
-      {/* RIGHT GRID */}
-      <div className="relative w-full md:w-1/2 grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 scale-[0.82] sm:scale-100">
-        {/* Cowboy */}
-        <div className="relative pr-4">
-          <button
-            onClick={() => toggleMute('cowboy')}
-            className="absolute top-2 right-8 z-30"
-          >
-            {muteState.cowboy ? '🔇' : '🔊'}
-          </button>
-          <VideoSequencer
-            ref={refs.cowboy}
-            videoSources={[videoSources.A, videoSources.A2]}
-            muted={muteState.cowboy}
-            videoClassName="rounded-2xl shadow-xl w-full h-[140px] sm:h-[180px] md:h-[220px] lg:h-[250px] object-cover"
-          />
-        </div>
-
-        {/* Climber */}
-        <div className="relative mr-3">
-          <button
-            onClick={() => toggleMute('climber')}
-            className="absolute top-2 right-2 z-30"
-          >
-            {muteState.climber ? '🔇' : '🔊'}
-          </button>
-          <VideoSequencer
-            ref={refs.climber}
-            videoSources={[videoSources.B, videoSources.B2]}
-            muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full h-[190px] sm:h-[260px] lg:h-[400px] xl:h-[430px] object-cover"
-          />
-        </div>
-
-        {/* Floating Text */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[40%] bg-gray-800/80 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-3 z-40 text-xs sm:text-sm">
-          <TextType
-            text={[
-              'Create a hillarious video',
-              'Create a funny video',
-              'Create a cinematic scene',
-            ]}
-            typingSpeed={75}
-            pauseDuration={1500}
-            showCursor
-            cursorCharacter="|"
-          />
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-7 h-7 bg-white rounded-full flex items-center justify-center cursor-pointer"
-          >
-            ↑
-          </motion.div>
-        </div>
-
-        {/* Ballerina */}
-        <div className="relative -top-14  lg:-top-40 left-8 md:left-12">
-          <button
-            onClick={() => toggleMute('ballerina')}
-            className="absolute top-2 right-2 z-30"
-          >
-            {muteState.ballerina ? '🔇' : '🔊'}
-          </button>
-          <VideoSequencer
-            ref={refs.ballerina}
-            videoSources={[videoSources.C, videoSources.C2]}
-            muted={muteState.ballerina}
-            videoClassName="rounded-2xl shadow-xl w-full h-[180px] sm:h-[260px] md:h-[320px] lg:h-[360px] xl:h-[370px] object-cover"
-          />
-        </div>
-
-        {/* Clay */}
-        <div className="relative mt-5 pl-8">
-          <button
-            onClick={() => toggleMute('clay')}
-            className="absolute top-2 right-2 z-30"
-          >
-            {muteState.clay ? '🔇' : '🔊'}
-          </button>
-          <VideoSequencer
-            ref={refs.clay}
-            videoSources={[videoSources.D, videoSources.D2]}
-            muted={muteState.clay}
-            videoClassName="rounded-2xl shadow-xl w-full h-[120px] sm:h-[150px] md:h-[200px] lg:h-[220px] xl:h-[240px] object-cover"
           />
         </div>
       </div>

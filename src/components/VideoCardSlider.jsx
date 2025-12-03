@@ -77,8 +77,8 @@ export default function VideoSlider() {
               <TextType
                 key={index}
                 text={[videos[index].title]}
-                typingSpeed={110}
-                pauseDuration={1500}
+                typingSpeed={150}
+                pauseDuration={4000}
                 showCursor={true}
                 cursorCharacter="|"
               />

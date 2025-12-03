@@ -68,7 +68,7 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('cowboy')}
             className="absolute top-3  right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
+            {muteState.cowboy ? <VolumeOff size={18} /> : <Volume2 size={18} />}
           </button>
 
           <VideoSequencer
@@ -85,7 +85,11 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('climber')}
             className="absolute top-3 right-12 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
+            {muteState.climber ? (
+              <VolumeOff size={18} />
+            ) : (
+              <Volume2 size={18} />
+            )}
           </button>
 
           <VideoSequencer
@@ -97,19 +101,15 @@ const SoraShowcase = () => {
         </div>
 
         {/* Floating Text */}
-        <div className="absolute bottom-[45%]  left-25 lg:left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
+        <div className="absolute bottom-[45%]   left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
+          <h2>Create a</h2>
           <TextType
-            text={[
-              'Create a hillarious video',
-              'Create a funny video',
-              'Create a cinematic scene',
-            ]}
-            typingSpeed={110}
-            pauseDuration={1500}
+            text={['hillarious video', 'funny video', 'cinematic scene']}
+            typingSpeed={150}
+            pauseDuration={4000}
             showCursor={true}
             cursorCharacter="|"
           />
-
           <motion.div
             className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer 
                          transition-all duration-300 hover:bg-yellow-400"
@@ -139,7 +139,11 @@ const SoraShowcase = () => {
             onClick={() => toggleMute('ballerina')}
             className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
           >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
+            {muteState.ballerina ? (
+              <VolumeOff size={18} />
+            ) : (
+              <Volume2 size={18} />
+            )}
           </button>
           <VideoSequencer
             ref={refs.ballerina}

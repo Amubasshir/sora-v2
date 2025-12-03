@@ -290,7 +290,7 @@ const MentionApp = () => {
             {/* Text Typing Animation Component */}
             <TextType
               text={isTypingPaused ? currentText : fullText} // Use currentText if paused, else use fullText for typing
-              typingSpeed={200}
+              typingSpeed={250}
               showCursor={true}
               cursorCharacter="|"
               onTypeUpdate={handleTypeUpdate}
