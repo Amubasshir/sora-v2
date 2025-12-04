@@ -282,11 +282,11 @@ const MentionApp = () => {
 
         {/* Input Bar Structure */}
         <div
-          className="p-3 px-6 bgnav rounded-full 
-                       text-sm text-white font-medium flex items-center justify-between space-x-3 
+          className=" p-2 sm:p-3 px-4 sm:px-6 bgnav rounded-full 
+                       text-white  flex items-center justify-between space-x-2 sm:space-x-3
                        shadow-2xl  relative z-20"
         >
-          <div className="flex items-center flex-grow">
+          <div className="flex items-center flex-grow text-sm md:text-base font-medium ">
             {/* Text Typing Animation Component */}
             <TextType
               text={isTypingPaused ? currentText : fullText} // Use currentText if paused, else use fullText for typing

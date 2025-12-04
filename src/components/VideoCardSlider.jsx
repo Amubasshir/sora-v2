@@ -72,13 +72,13 @@ export default function VideoSlider() {
             <motion.div
               animate={{ y: [-6, 6, -6] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="bgnav px-4 py-2 rounded-3xl flex gap-3 max-w-90 w-full"
+              className="bgnav  p-2 sm:p-3 px-4 sm:px-6 rounded-full flex gap-3 max-w-90 w-full text-sm md:text-base font-medium items-center space-x-2 sm:space-x-3"
             >
               <TextType
                 key={index}
                 text={[videos[index].title]}
                 typingSpeed={150}
-                pauseDuration={4000}
+                pauseDuration={6000}
                 showCursor={true}
                 cursorCharacter="|"
               />
