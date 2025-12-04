@@ -20,19 +20,44 @@ const SoraShowcase = () => {
     clay: useRef(null),
   };
 
+  // const toggleMute = key => {
+  //   const newVal = !muteState[key];
+
+  //   setMuteState(prev => ({ ...prev, [key]: newVal }));
+
+  //   const video = refs[key].current;
+  //   if (video) {
+  //     video.muted = newVal;
+
+  //     // This is the critical fix for browser audio policy
+  //     video.currentTime = video.currentTime;
+  //     video.play().catch(() => {});
+  //   }
+  // };
+
   const toggleMute = key => {
     const newVal = !muteState[key];
 
-    setMuteState(prev => ({ ...prev, [key]: newVal }));
+    // Step 1: Update state so only one can be unmuted
+    setMuteState(prev => {
+      const updated = {};
+      Object.keys(prev).forEach(k => {
+        updated[k] = k === key ? newVal : true; // all others muted
+      });
+      return updated;
+    });
 
-    const video = refs[key].current;
-    if (video) {
-      video.muted = newVal;
+    Object.keys(refs).forEach(k => {
+      const video = refs[k].current;
+      if (video) {
+        const shouldMute = k === key ? newVal : true;
+        video.muted = shouldMute;
 
-      // This is the critical fix for browser audio policy
-      video.currentTime = video.currentTime;
-      video.play().catch(() => {});
-    }
+        // browser autoplay fix
+        video.currentTime = video.currentTime;
+        video.play().catch(() => {});
+      }
+    });
   };
 
   const videoSources = {

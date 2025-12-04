@@ -1,173 +1,469 @@
+// import React, { useState, useEffect, useCallback } from 'react';
+// import { motion, AnimatePresence } from 'framer-motion';
+
+// // --- 1. Data and Constants (Updated with multiple profiles) ---
+// const SUGGESTIONS_DATA = [
+//   {
+//     name: 'Minnia_Dev',
+//     followers: 20,
+//     description: 'Software Engineer',
+//     avatarUrl: 'https://placehold.co/100x100/A05EFF/ffffff?text=MD',
+//   },
+//   {
+//     name: 'Minnia_Art',
+//     followers: 55,
+//     description: 'Digital Artist',
+//     avatarUrl: 'https://placehold.co/100x100/A05EFF/ffffff?text=MA',
+//   },
+//   {
+//     name: 'Thomas_Coder',
+//     followers: 15,
+//     description: 'Backend Developer',
+//     avatarUrl: 'https://placehold.co/100x100/40C4FF/ffffff?text=TC',
+//   },
+//   {
+//     name: 'Thomas_Art',
+//     followers: 42,
+//     description: '3D Modeler',
+//     avatarUrl: 'https://placehold.co/100x100/40C4FF/ffffff?text=TA',
+//   },
+//   {
+//     name: 'Mina',
+//     followers: 38,
+//     description: 'Marketing Specialist',
+//     avatarUrl: 'https://placehold.co/100x100/FF5252/ffffff?text=MI',
+//   },
+//   {
+//     name: 'Minal',
+//     followers: 22,
+//     description: 'UI/UX Designer',
+//     avatarUrl: 'https://placehold.co/100x100/F9A825/ffffff?text=ML',
+//   },
+// ];
+
+// // Framer Motion variants for the slide-up/fade-in animation
+// const suggestionsVariants = {
+//   hidden: { opacity: 0, scale: 0.95, y: 10 },
+//   visible: {
+//     opacity: 1,
+//     scale: 1,
+//     y: 0,
+//     transition: {
+//       type: 'spring',
+//       stiffness: 250,
+//       damping: 25,
+//     },
+//   },
+// };
+
+// // --- 2. TextType Component (Handles the animated typing effect) ---
+// const TextType = ({
+//   text,
+//   typingSpeed = 75,
+//   showCursor = true,
+//   cursorCharacter = '|',
+//   onTypeUpdate,
+//   isPaused,
+// }) => {
+//   // Use initialIndex to start typing from 0 or from the end if paused (after selection)
+//   const initialIndex = isPaused ? text.length : 0;
+//   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+
+//   // The text being displayed is always a substring of the full 'text' prop
+//   const displayedText = text.substring(0, currentIndex);
+//   const isTypingComplete = currentIndex >= text.length;
+
+//   // Sync index when parent updates text (e.g., after selection)
+//   useEffect(() => {
+//     if (isPaused) {
+//       // When paused (after selection), ensure currentIndex is at the end of the new text
+//       setCurrentIndex(text.length);
+//     } else if (currentIndex > text.length) {
+//       // If typing resumes and text has changed/shrunk, reset index
+//       setCurrentIndex(0);
+//     }
+//   }, [text, isPaused]);
+
+//   const memoizedOnTypeUpdate = useCallback(onTypeUpdate, [onTypeUpdate]);
+
+//   useEffect(() => {
+//     if (isPaused || isTypingComplete) {
+//       return;
+//     }
+
+//     const timeout = setTimeout(() => {
+//       const nextIndex = currentIndex + 1;
+//       const nextText = text.substring(0, nextIndex);
+
+//       setCurrentIndex(nextIndex);
+//       memoizedOnTypeUpdate(nextText); // Report update back to parent
+//     }, typingSpeed);
+
+//     return () => clearTimeout(timeout);
+//   }, [
+//     currentIndex,
+//     text,
+//     typingSpeed,
+//     memoizedOnTypeUpdate,
+//     isPaused,
+//     isTypingComplete,
+//   ]);
+
+//   return (
+//     <span className="text-white font-medium">
+//       {displayedText}
+//       {/* Show cursor only if typing is not complete and not paused */}
+//       {showCursor && !isTypingComplete && !isPaused && (
+//         <span className="ml-1 opacity-100 transition-opacity duration-500 animate-pulse">
+//           {cursorCharacter}
+//         </span>
+//       )}
+//     </span>
+//   );
+// };
+
+// // --- 3. MentionSuggestions Component ---
+// const SuggestionItem = ({
+//   name,
+//   followers,
+//   avatarUrl,
+//   description,
+//   isSelected,
+//   onClick,
+// }) => (
+//   <div
+//     className={`p-2 rounded-lg flex items-center space-x-3 transition-colors duration-200
+//                 ${
+//                   isSelected ? 'bg-white/10' : 'hover:bg-white/5'
+//                 } cursor-pointer`}
+//     onClick={() => onClick(name)} // Handle click and pass the selected name
+//   >
+//     {/* Avatar */}
+//     <div className="w-10 h-10 rounded-full flex-shrink-0 overflow-hidden border border-white/20">
+//       <img
+//         src={avatarUrl}
+//         alt={`${name}'s avatar`}
+//         className="w-full h-full object-cover"
+//         onError={e => {
+//           e.target.onerror = null;
+//           e.target.src = 'https://placehold.co/100x100/374151/ffffff?text=?';
+//         }}
+//       />
+//     </div>
+
+//     {/* Text */}
+//     <div>
+//       <h3 className="text-sm font-semibold text-white">{name}</h3>
+//       <p className="text-xs text-gray-400">{description}</p>
+//     </div>
+//   </div>
+// );
+
+// const MentionSuggestions = ({ show, mentionPrefix, onSelect }) => {
+//   const filteredSuggestions = SUGGESTIONS_DATA.filter(s =>
+//     s.name.toLowerCase().includes(mentionPrefix.toLowerCase())
+//   );
+
+//   // Use AnimatePresence to handle the smooth unmount (exit) animation
+//   return (
+//     <AnimatePresence>
+//       {show &&
+//         filteredSuggestions.length > 0 && ( // Only show if there are results
+//           <motion.div
+//             // Positioning is now relative to the centered input wrapper
+//             className="absolute bottom-full mb-3 w-64 p-2 rounded-xl shadow-2xl overflow-hidden
+//                      bg-gray-800/80 border border-white/10 z-10" // Glassmorphism style
+//             variants={suggestionsVariants}
+//             initial="hidden"
+//             animate="visible"
+//             exit="hidden"
+//           >
+//             {filteredSuggestions.map((suggestion, index) => (
+//               <SuggestionItem
+//                 key={suggestion.name}
+//                 {...suggestion}
+//                 isSelected={index === 0} // Highlight the first one
+//                 onClick={onSelect} // Pass the selection handler
+//               />
+//             ))}
+//           </motion.div>
+//         )}
+//     </AnimatePresence>
+//   );
+// };
+
+// // --- 4. Main Application Component ---
+// const MentionApp = () => {
+//   // The full text to be typed
+//   const fullText = '@minnia and @thomas in a retro futuristic world';
+//   const [currentText, setCurrentText] = useState('');
+//   const [isTypingPaused, setIsTypingPaused] = useState(false);
+
+//   // LOGIC TO DETECT ACTIVE MENTION AND SHOW THE BOX
+//   const lastAtIndex = currentText.lastIndexOf('@');
+
+//   let mentionPrefix = '';
+//   let showSuggestions = false;
+
+//   if (lastAtIndex !== -1) {
+//     const textAfterAt = currentText.substring(lastAtIndex + 1);
+
+//     // Check if the text after '@' contains a space or if typing is paused
+//     if (!textAfterAt.includes(' ') && !isTypingPaused) {
+//       mentionPrefix = textAfterAt;
+//       // Only show suggestions if there's an active mention prefix being typed
+//       showSuggestions = mentionPrefix.length > 0;
+//     }
+//   }
+
+//   // Memoize the callback function for updating text from TextType
+//   const handleTypeUpdate = useCallback(
+//     text => {
+//       if (!isTypingPaused) {
+//         setCurrentText(text);
+//       }
+//     },
+//     [isTypingPaused]
+//   );
+
+//   // Handle selection from the suggestion box
+//   const handleSelectSuggestion = useCallback(
+//     selectedName => {
+//       if (lastAtIndex === -1) return;
+
+//       // 1. Get the part of the text *before* the current @
+//       const textBeforeAt = currentText.substring(0, lastAtIndex);
+
+//       // 2. Construct the new text: (text before @) + (@selectedName) + (a space to close the mention)
+//       const newText = `${textBeforeAt}@${selectedName} `;
+
+//       // 3. Find the rest of the original text after the mention
+//       // Find the end of the current mention (either a space or end of string)
+//       const endOfMention = currentText.indexOf(' ', lastAtIndex);
+//       const textAfterMention =
+//         endOfMention !== -1 ? currentText.substring(endOfMention) : '';
+
+//       const finalNewText = newText + textAfterMention.trimStart();
+
+//       // 4. Update state to reflect selection
+//       setCurrentText(finalNewText);
+//       setIsTypingPaused(true); // Pause typing animation immediately
+//     },
+//     [currentText, lastAtIndex]
+//   );
+
+//   const screenShowVariants = {
+//     hidden: { opacity: 0, y: 30, scale: 0.95 },
+//     visible: {
+//       opacity: 1,
+//       y: 0,
+//       scale: 1,
+//       transition: {
+//         duration: 0.5,
+//         ease: 'easeOut',
+//       },
+//     },
+//   };
+
+//   return (
+//     // Full screen setup with transparent background and centered content
+//     <motion.div
+//       className="relative flex items-center justify-center"
+//       variants={screenShowVariants}
+//       initial="hidden"
+//       animate="visible"
+//     >
+//       <div className="">
+//         <MentionSuggestions
+//           show={showSuggestions && !isTypingPaused}
+//           mentionPrefix={mentionPrefix}
+//           onSelect={handleSelectSuggestion} // Pass selection handler
+//         />
+
+//         {/* Input Bar Structure */}
+//         <div
+//           className=" p-2 sm:p-3 px-4 sm:px-6 bgnav rounded-full
+//                        text-white  flex items-center justify-between space-x-2 sm:space-x-3
+//                        shadow-2xl  relative z-20"
+//         >
+//           <div className="flex items-center flex-grow text-sm md:text-base font-medium ">
+//             {/* Text Typing Animation Component */}
+//             <TextType
+//               text={isTypingPaused ? currentText : fullText} // Use currentText if paused, else use fullText for typing
+//               typingSpeed={250}
+//               showCursor={true}
+//               cursorCharacter="|"
+//               onTypeUpdate={handleTypeUpdate}
+//               isPaused={isTypingPaused} // Pass pause state
+//             />
+//           </div>
+
+//           {/* Up Arrow Icon / Send Button */}
+//           <motion.div
+//             className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer
+//                          transition-all duration-300 hover:bg-yellow-400"
+//             whileHover={{ scale: 1.1 }}
+//             whileTap={{ scale: 0.9 }}
+//           >
+//             <svg
+//               className="w-4 h-4 text-gray-800"
+//               fill="none"
+//               stroke="currentColor"
+//               viewBox="0 0 24 24"
+//               xmlns="http://www.w3.org/2000/svg"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 strokeWidth="2"
+//                 d="M5 10l7-7m0 0l7 7m-7-7v18"
+//               ></path>
+//             </svg>
+//           </motion.div>
+//         </div>
+//       </div>
+//     </motion.div>
+//   );
+// };
+
+// export default MentionApp;
 'use client';
-import { VolumeOff } from 'lucide-react';
-import { Volume2 } from 'lucide-react';
-import React, { useRef, useState } from 'react';
-import TextType from './TextType';
-import VideoSequencer from './VideoSequencer';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-const SoraShowcase = () => {
-  const [muteState, setMuteState] = useState({
-    cowboy: true,
-    climber: true,
-    ballerina: true,
-    clay: true,
-  });
 
-  const refs = {
-    cowboy: useRef(null),
-    climber: useRef(null),
-    ballerina: useRef(null),
-    clay: useRef(null),
-  };
+// --- Profile Data ---
+const PROFILES = [
+  {
+    name: 'Minnia',
+    description: 'Software Engineer',
+    avatarUrl: 'https://placehold.co/100x100/A05EFF/ffffff?text=MD',
+  },
+  {
+    name: 'Thomas',
+    description: 'Backend Developer',
+    avatarUrl: 'https://placehold.co/100x100/40C4FF/ffffff?text=TC',
+  },
+];
 
-  const toggleMute = key => {
-    const newVal = !muteState[key];
-
-    setMuteState(prev => ({ ...prev, [key]: newVal }));
-
-    const video = refs[key].current;
-    if (video) {
-      video.muted = newVal;
-
-      // This is the critical fix for browser audio policy
-      video.currentTime = video.currentTime;
-      video.play().catch(() => {});
+// --- Suggestion Item with click animation ---
+const SuggestionItem = ({ profile, animateClick }) => (
+  <motion.div
+    className="p-2 rounded-lg flex items-center space-x-3 cursor-pointer bg-gray-700"
+    initial={{ scale: 1, boxShadow: '0px 0px 0px rgba(0,0,0,0)' }}
+    animate={
+      animateClick
+        ? {
+            scale: [1, 0.9, 1.05, 1],
+            boxShadow: [
+              '0px 0px 0px rgba(0,0,0,0)',
+              '0px 5px 15px rgba(255,255,0,0.5)',
+              '0px 2px 8px rgba(255,255,0,0.3)',
+              '0px 0px 0px rgba(0,0,0,0)',
+            ],
+          }
+        : {}
     }
-  };
+    transition={{ duration: 0.8, times: [0, 0.3, 0.6, 1], ease: 'easeInOut' }}
+  >
+    <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+      <img
+        src={profile.avatarUrl}
+        alt={profile.name}
+        className="w-full h-full object-cover"
+      />
+    </div>
+    <div>
+      <h3 className="text-sm font-semibold text-white">{profile.name}</h3>
+      <p className="text-xs text-gray-400">{profile.description}</p>
+    </div>
+  </motion.div>
+);
 
-  const videoSources = {
-    A: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/dfe39237-58e5-4119-a639-0a8884e853e4/20250917_1849_a%20western%20cowboy%20sits%20on%20a%20horse%20at%20golden%20hour.%20Slow%20push-in%20on%20the%20cowboy%20as%20he%20says,%20_one%20day%20wit_simple_compose_01k5d85mhffmbsby6z3zff0jxx%20(1).mp4',
-    A2: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/4544fb23-bfdb-4f39-a226-cbf7bc022cf5/20250925_2005_New%20Video_simple_compose_01k61zpm1jesn8d3wksf7vv35g.mp4',
-    B: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/eca52501-ab5d-44de-8989-7390969c16bd/20250928_1527_New%20Video_simple_compose_01k696zzdheaaa9n17e2g2dyn9.mp4',
-    B2: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-audio/4f7b652a-6db1-4ead-86fe-f3a88ba45963/20250928_1750_New%20Video_simple_compose_01k69f5bhrfb6rs9027f5nzrre.mp4',
-    C: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/4544fb23-bfdb-4f39-a226-cbf7bc022cf5/20250819_1450_ballerina.%20cinematic_simple_compose_01k32501vnfk39f4bs4f9x740h.mp4',
-    C2: 'https://openaiassets.blob.core.windows.net/$web/nf2/nf2-lp/nf2-lp-hero/eca52501-ab5d-44de-8989-7390969c16bd/20250928_1502_New%20Video_simple_compose_01k695hnqxe6d98e6qjhte7wgm.mp4',
-    D: 'https://cdn.openai.com/nf2/nf2-lp/nf2-lp-hero/dfe39237-58e5-4119-a639-0a8884e853e4/20250918_1431_a%20claymation%20conductor%20conducts%20a%20claymation%20orchestra_simple_compose_01k5fbtf2cfrtvxgmj5fv44r02.mp4',
-    D2: 'https://openaiassets.blob.core.windows.net/$web/nf2/nf2-lp/nf2-lp-hero/eca52501-ab5d-44de-8989-7390969c16bd/20250928_1508_New%20Video_simple_compose_01k695xxtae1h9hftz1jprsc0m.mp4',
-  };
+// --- TextType Component ---
+const TextType = ({ text, typingSpeed, onTypeUpdate, isPaused }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (isPaused || index >= text.length) return;
+
+    const timeout = setTimeout(() => {
+      setIndex(prev => prev + 1);
+      onTypeUpdate(text.substring(0, index + 1));
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [index, text, typingSpeed, onTypeUpdate, isPaused]);
 
   return (
-    <section className="py-12 px-2 md:py-24 text-white flex flex-col md:flex-row items-center gap-8 md:gap-20">
-      {/* LEFT TEXT */}
-      <div className="relative flex flex-col gap-4 text-white w-full md:max-w-[40%] px-3">
-        <h1 className="text-balance text-[28px] font-medium leading-[118%] tracking-[-0.015em] lg:text-[40px]">
-          From words to worlds
-        </h1>
-        <p className="text-balance text-[16px] font-medium leading-[140%] tracking-[-0.01em] lg:text-[20px] lg:leading-[130%]">
-          Start with a prompt or upload an image <br /> to create videos with
-          unprecedented <br /> realism in any style: cinematic, <br /> animated,
-          photorealistic, or surreal.
-        </p>
-      </div>
-
-      {/* RIGHT GRID */}
-      <div className="w-full md:w-1/2 grid grid-cols-2 gap-8 relative">
-        {/* Cowboy */}
-        <div className="relative -ml-10">
-          <button
-            onClick={() => toggleMute('cowboy')}
-            className="absolute top-3  right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
-          >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
-          </button>
-
-          <VideoSequencer
-            ref={refs.cowboy}
-            videoSources={[videoSources.A, videoSources.A2]}
-            muted={muteState.cowboy}
-            videoClassName="rounded-2xl shadow-xl w-full h-[190px] sm:h-[180px] md:h-[220px] lg:h-[250px] xl:h-[270px] object-cover"
-          />
-        </div>
-
-        {/* Climber */}
-        <div className="relative z-10 ">
-          <button
-            onClick={() => toggleMute('climber')}
-            className="absolute top-3 right-12 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
-          >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
-          </button>
-
-          <VideoSequencer
-            ref={refs.climber}
-            videoSources={[videoSources.B, videoSources.B2]}
-            muted={muteState.climber}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-[90%] h-[280px] lg:h-[380px] xl:h-[430px] object-cover"
-          />
-        </div>
-
-        {/* Floating Text */}
-        <div className="absolute bottom-[45%]  left-25 lg:left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-xs sm:text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
-          <TextType
-            text={[
-              'Create a hillarious video',
-              'Create a funny video',
-              'Create a cinematic scene',
-            ]}
-            typingSpeed={110}
-            pauseDuration={1500}
-            showCursor={true}
-            cursorCharacter="|"
-          />
-
-          <motion.div
-            className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer 
-                         transition-all duration-300 hover:bg-yellow-400"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <svg
-              className="w-4 h-4 text-gray-800"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              ></path>
-            </svg>
-          </motion.div>
-        </div>
-
-        {/* Ballerina */}
-        <div className="col-span-1 absolute mt-54 sm:mt-53 md:mt-57 lg:mt-73 lg:-ml-12 xl:ml-10 -ml-4 sm:ml-22  md:-ml-5 hover:z-20">
-          <button
-            onClick={() => toggleMute('ballerina')}
-            className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
-          >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
-          </button>
-          <VideoSequencer
-            ref={refs.ballerina}
-            videoSources={[videoSources.C, videoSources.C2]}
-            muted={muteState.ballerina}
-            videoClassName="rounded-2xl shadow-xl w-[260px] sm:w-[280px] md:w-[250px] lg:w-[340px] h-[270px] sm:h-[260px] md:h-[250px] lg:h-[360px] xl:h-[390px] object-cover"
-          />
-        </div>
-
-        {/* Clay */}
-        <div className="col-start-2 relative pl-10 md:pl-0 md:-mr-0 -mr-4 md:mt-0 md:ml-10">
-          <button
-            onClick={() => toggleMute('clay')}
-            className="absolute top-2 sm:top-3 right-3 bg-black/60 px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm border border-white/20 z-30"
-          >
-            {muteState.clay ? <VolumeOff size={18} /> : <Volume2 size={18} />}
-          </button>
-
-          <VideoSequencer
-            ref={refs.clay}
-            videoSources={[videoSources.D, videoSources.D2]}
-            muted={muteState.clay}
-            videoClassName="rounded-2xl shadow-xl w-full sm:w-[220px] md:w-full h-[140px] sm:h-[150px] md:h-[200px] lg:h-[220px] xl:h-[240px] object-cover"
-          />
-        </div>
-      </div>
-    </section>
+    <span className="text-white font-medium">
+      {text.substring(0, index)}
+      {!isPaused && index < text.length && (
+        <span className="ml-1 animate-pulse">|</span>
+      )}
+    </span>
   );
 };
 
-export default SoraShowcase;
+// --- Main Component ---
+const MentionApp = () => {
+  const fullText = '@minnia and @thomas in a retro futuristic world';
+  const [currentText, setCurrentText] = useState('');
+  const [isPaused, setIsPaused] = useState(false);
+  const [animateProfile, setAnimateProfile] = useState(null);
+  const typingSpeed = 100;
+
+  const profilesQueue = useRef(['Minnia', 'Thomas']);
+
+  const handleTypeUpdate = text => {
+    setCurrentText(text);
+
+    if (profilesQueue.current.length > 0) {
+      const nextProfile = profilesQueue.current[0];
+      if (
+        text.toLowerCase().includes(`@${nextProfile.toLowerCase()}`) &&
+        !animateProfile
+      ) {
+        setIsPaused(true);
+        setAnimateProfile(nextProfile);
+
+        setTimeout(() => {
+          setAnimateProfile(null);
+          setIsPaused(false);
+          profilesQueue.current.shift();
+        }, 1000); // duration of "click animation"
+      }
+    }
+  };
+
+  return (
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-900 p-5">
+      <div className="relative w-full max-w-md">
+        <AnimatePresence>
+          {animateProfile && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute bottom-full mb-3 w-64 p-2 rounded-xl shadow-2xl bg-gray-800/80 border border-white/10 z-10"
+            >
+              {PROFILES.filter(p => p.name === animateProfile).map(p => (
+                <SuggestionItem key={p.name} profile={p} animateClick={true} />
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="p-3 rounded-full text-white flex items-center shadow-2xl bg-gray-700">
+          <TextType
+            text={fullText}
+            typingSpeed={typingSpeed}
+            onTypeUpdate={handleTypeUpdate}
+            isPaused={isPaused}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MentionApp;

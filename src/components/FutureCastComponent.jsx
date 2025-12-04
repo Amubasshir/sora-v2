@@ -91,7 +91,7 @@ const FutureCastComponent = () => {
         {/* 💬 Bottom Caption/Prompt Bubble with Typing Animation */}
 
         <div
-          className="absolute bottom-0 md:-bottom-4 md:left-10/30 lg:left-2/12 md:-translate-x-1/2 p-1 ms:px-6  rounded-full
+          className="absolute bottom-0 md:-bottom-7 md:left-10/30 lg:left-2/12 md:-translate-x-1/2 p-1 ms:px-6  rounded-full
                          text-sm text-white font-medium flex items-center space-x-3 md:max-w-[90%]  md:-ml-12 lg:ml-86 "
         >
           <MentionSuggestions></MentionSuggestions>
