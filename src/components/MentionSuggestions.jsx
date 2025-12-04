@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Profile Data ---
@@ -24,12 +24,16 @@ const PROFILES = [
     name: 'Thomas_Art',
     avatarUrl: 'https://placehold.co/100x100/40C4FF/ffffff?text=TA',
   },
+  {
+    name: 'Thomas_Dev',
+    avatarUrl: 'https://placehold.co/100x100/40C4FF/ffffff?text=TD',
+  },
 ];
 
-// --- Suggestion Item (Avatar + Name zoom animation) ---
+// --- Suggestion Item ---
 const SuggestionItem = ({ profile, animate, scaleValue }) => (
   <motion.div
-    className="relative flex items-center space-x-3 bg-gray-700 p-2 rounded-lg mb-2"
+    className="flex items-center space-x-3 bg-gray-700 p-2 rounded-lg mb-2"
     animate={animate ? { scale: [1, scaleValue, 1] } : {}}
     transition={{ duration: 0.7 }}
   >
@@ -55,12 +59,10 @@ const TextType = ({ text, typingSpeed, onTypeUpdate, isPaused }) => {
 
   useEffect(() => {
     if (isPaused || index >= text.length) return;
-
     const timeout = setTimeout(() => {
       setIndex(prev => prev + 1);
       onTypeUpdate(text.substring(0, index + 1));
     }, typingSpeed);
-
     return () => clearTimeout(timeout);
   }, [index, text, typingSpeed, onTypeUpdate, isPaused]);
 
@@ -82,68 +84,87 @@ const MentionApp = () => {
   const [animateProfile, setAnimateProfile] = useState(null);
   const typingSpeed = 100;
 
-  // Queue for profile groups
-  const profilesQueue = useRef([
-    {
-      key: 'Minnia',
-      profiles: PROFILES.filter(p => p.name.includes('Minnia')),
-      scale: 0.9,
-      animateIndex: 0,
-    },
-    {
-      key: 'Thomas',
-      profiles: PROFILES.filter(p => p.name.includes('Thomas')),
-      scale: 0.9,
-      animateIndex: 1,
-    }, // only second profile animates
-  ]);
+  const stepRef = React.useRef('min'); // min -> thomas -> done
 
   const handleTypeUpdate = text => {
     setCurrentText(text);
 
-    if (profilesQueue.current.length > 0) {
-      const nextGroup = profilesQueue.current[0];
+    // @min trigger
+    if (
+      stepRef.current === 'min' &&
+      text.toLowerCase().includes('@min') &&
+      !currentText.includes('@minnia')
+    ) {
+      setIsPaused(true);
+      setAnimateProfile('min');
 
-      if (
-        text.toLowerCase().includes(`@${nextGroup.key.toLowerCase()}`) &&
-        !animateProfile
-      ) {
-        setIsPaused(true);
-        setAnimateProfile(nextGroup.key);
+      setTimeout(() => {
+        setAnimateProfile(null);
+        setIsPaused(false);
+        setCurrentText(fullText); // full @minnia and rest
+        stepRef.current = 'thomas';
+      }, 1000);
+    }
 
-        setTimeout(() => {
-          setAnimateProfile(null);
-          setIsPaused(false);
-          profilesQueue.current.shift();
-        }, 900); // animation duration
-      }
+    // @thomas trigger
+    else if (
+      stepRef.current === 'thomas' &&
+      text.toLowerCase().includes('@th') &&
+      !currentText.includes('@thomas')
+    ) {
+      setIsPaused(true);
+      setAnimateProfile('thomas');
+
+      setTimeout(() => {
+        setAnimateProfile(null);
+        setIsPaused(false);
+        setCurrentText(fullText); // full text
+        stepRef.current = 'done';
+      }, 1000);
     }
   };
 
   return (
-    <div className="relative flex  items-center  p-5">
+    <div className="relative flex items-center p-5">
       <div className="relative w-full max-w-md">
         <AnimatePresence>
-          {animateProfile && (
+          {animateProfile === 'min' && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               className="absolute bottom-full mb-3 w-64 p-2 rounded-xl shadow-2xl bg-gray-800/80 border border-white/10 z-10"
             >
-              {profilesQueue.current[0]?.profiles.map((p, i) => (
+              {PROFILES.filter(p => p.name.includes('Minnia')).map((p, i) => (
                 <SuggestionItem
                   key={p.name}
                   profile={p}
-                  animate={i === profilesQueue.current[0].animateIndex} // animation only on specified profile
-                  scaleValue={profilesQueue.current[0].scale}
+                  animate={i === 0}
+                  scaleValue={0.9}
+                />
+              ))}
+            </motion.div>
+          )}
+          {animateProfile === 'thomas' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute bottom-full mb-3 w-64 p-2 rounded-xl shadow-2xl bg-gray-800/80 border border-white/10 z-10"
+            >
+              {PROFILES.filter(p => p.name.includes('Thomas')).map((p, i) => (
+                <SuggestionItem
+                  key={p.name}
+                  profile={p}
+                  animate={i === 1}
+                  scaleValue={0.9}
                 />
               ))}
             </motion.div>
           )}
         </AnimatePresence>
 
-        <div className="p-2 sm:p-3 px-4  rounded-full text-white flex text-base font-medium items-center space-x-2 sm:space-x-3 z-50 shadow-2xl bg-gray-700">
+        <div className="p-3 rounded-full text-white flex items-center shadow-2xl bg-gray-700">
           <TextType
             text={fullText}
             typingSpeed={typingSpeed}
