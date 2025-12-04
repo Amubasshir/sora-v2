@@ -164,13 +164,34 @@ const MentionApp = () => {
           )}
         </AnimatePresence>
 
-        <div className="p-3 rounded-full text-white flex items-center shadow-2xl bg-gray-700">
+        <div className="p-3 rounded-full text-white flex items-center shadow-2xl bg-gray-700 text-base font-medium gap-3 space-x-2 sm:space-x-3 z-50">
           <TextType
             text={fullText}
             typingSpeed={typingSpeed}
             onTypeUpdate={handleTypeUpdate}
             isPaused={isPaused}
           />
+          <motion.div
+            className="w-8 h-8 bg-white rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer 
+                                     transition-all duration-300 hover:bg-yellow-400"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <svg
+              className="w-4 h-4 text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              ></path>
+            </svg>
+          </motion.div>
         </div>
       </div>
     </div>
