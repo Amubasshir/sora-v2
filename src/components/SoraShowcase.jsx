@@ -101,11 +101,11 @@ const SoraShowcase = () => {
         </div>
 
         {/* Floating Text */}
-        <div className="absolute bottom-[45%]   left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full text-sm md:text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
+        <div className="absolute bottom-[45%]   left-55 p-2 sm:p-3 px-4 sm:px-6 bg-gray-800/80 backdrop-blur-sm rounded-full  text-base font-medium flex items-center space-x-2 sm:space-x-3 z-50">
           Create a&nbsp;
           <TextType
             text={['hillarious video', 'funny video', 'cinematic scene']}
-            typingSpeed={150}
+            typingSpeed={75}
             pauseDuration={6000}
             showCursor={true}
             cursorCharacter="|"
